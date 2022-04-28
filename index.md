@@ -8,7 +8,6 @@ layout: default
 
 ## Work experience
 
-- Jun. 2021 - ongoing: Research engineer at Honda R&D
 - Apr. 2019 - May. 2021: Researcher at Toppan Printing
 
 ## Education
