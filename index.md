@@ -4,7 +4,7 @@ layout: default
 
 # R. Mitsuhashi (UPDATING)
 
-- Jun. 2021 - ongoing: Research engineer at Honda R&D
+- Jun. 2021 - ongoing: Research engineer at mobility company
 
 ## Work experience
 
