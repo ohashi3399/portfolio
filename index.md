@@ -17,6 +17,14 @@ layout: default
 - Apr. 2015 - Mar. 2017: B. Eng., Department of Engineering, Imaging and Informatics, Chiba University
 - Apr. 2010 - Mar. 2015: Associate degree, National Institute of Technology, Ibaraki College
 
+## Interests
+
+- Man-machine interaction such as dialogue system when driving mobility
+- Experimental design when driving mobility
+- Evaluation metrics design towards real world applications
+- Multi modal pretrained model and its deployment towards real world applications
+- Integration of multi modal system such as image, language, speech, and physiological information which responsible to real time processing
+
 ## Contents
 
 I plan to list below what I done.
