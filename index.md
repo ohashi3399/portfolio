@@ -30,8 +30,7 @@ are shown as below:
 - Driving mobility
 - Experimental design when driving
 - Evaluation metrics design towards real world applications
-- Multi modal pretrained model and its deployment towards real world applications
-- Integration of multi modal system which responsible to real time processing
+- Multi modal system which responsible to real time processing
 
 ## Contents
 
