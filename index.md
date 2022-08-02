@@ -38,7 +38,7 @@ are shown as below:
 I plan to list below what I done.
 
 ## Publications
-- Hirokazu Doi, Norimichi Tsumura, Chieko Kanai, Kenta Masui, Ryota Mitsuhashi,Takumi Nagasawa, Automatic classification of adult males with and without autism spectrum disorder by non-contact measurement of autonomic nervous system activation, Frontiers in Psychiatry (2021)17 May 2021 | https://doi.org/10.3389/fpsyt.2021.625978
+- Hirokazu Doi, Norimichi Tsumura, Chieko Kanai, Kenta Masui, Ryota Mitsuhashi,Takumi Nagasawa, Automatic classification of adult males with and without autism spectrum disorder by non-contact measurement of autonomic nervous system activation, Frontiers in Psychiatry (2021)17 May 2021 https://doi.org/10.3389/fpsyt.2021.625978
 - Kaito Iuchi, Ryota Mitsuhashi, Takashi Goto, Akira Matsubara, Takahiro Hirayama, Hideki Hashizume, and Norimichi Tsumura, Stress levels estimation from facial video based on non-contact measurement of pulse wave, Artificial Life and Robotics 25, pages335–342(2020)
 - Kaito Iuchi, Ryota Mitsuhashi, Takashi Goto, Akira Matsubara, Takahiro Hirayama, Hideki Hashizume, and Norimichi Tsumura, Removing the influence of light onto the face from display in iPPG, Artificial Life and Robotics 25, pages377–382(2020).
 - Ikisawa Natsuki, Ryota Mitsuhashi, Shoji Yamamoto, and Norimichi Tsumura, Relationship analysis between sexual attractiveness and heartrate variability in observing portrait and self-introduction movie, Artificial Life and Robotics 25, pages116–123(2020). 
