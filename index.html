@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>研究者ポートフォリオ</title> <!-- ここでサイトのタイトルを変更できます -->
+    <style>
+        /* 全体のスタイル */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        body {
+            display: flex;
+            background-color: #f8f9fa;
+            color: #333;
+            min-height: 100vh;
+        }
+        
+        /* サイドバーのスタイル */
+        .sidebar {
+            width: 250px;
+            background-color: #2e8b57; /* モダンな緑色 - 好みに合わせて調整可能 */
+            color: white;
+            padding: 2rem 0;
+            height: 100vh;
+            position: fixed;
+            overflow-y: auto;
+        }
+        
+        .sidebar-header {
+            padding: 0 1.5rem 2rem 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .sidebar-header h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .sidebar-header p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .sidebar-nav {
+            padding: 1.5rem;
+        }
+        
+        .nav-item {
+            margin-bottom: 1rem;
+            cursor: pointer;
+            padding: 0.75rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .nav-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-item.active {
+            background-color: rgba(255, 255, 255, 0.2);
+            font-weight: bold;
+        }
+        
+        /* メインコンテンツエリアのスタイル */
+        .main-content {
+            flex: 1;
+            padding: 2rem;
+            margin-left: 250px;
+            width: calc(100% - 250px);
+        }
+        
+        .content-section {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+        
+        .content-section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .section-title {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #2e8b57;
+            color: #2e8b57;
+        }
+        
+        /* カードコンポーネントのスタイル */
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card h3 {
+            color: #2e8b57;
+            margin-bottom: 1rem;
+        }
+        
+        .card p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: #666;
+            border-top: 1px solid #eee;
+            padding-top: 1rem;
+        }
+        
+        .card-tags span {
+            display: inline-block;
+            background-color: rgba(46, 139, 87, 0.1);
+            color: #2e8b57;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            margin-right: 0.5rem;
+            font-size: 0.8rem;
+        }
+        
+        .card-link a {
+            color: #2e8b57;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .card-link a:hover {
+            text-decoration: underline;
+        }
+        
+        /* プロフィールセクションのスタイル */
+        .profile-container {
+            display: flex;
+            margin-bottom: 2rem;
+        }
+        
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color: #e9ecef; /* プレースホルダー色 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 2rem;
+            overflow: hidden;
+        }
+        
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .profile-text {
+            flex: 1;
+        }
+        
+        .profile-text h2 {
+            color: #2e8b57;
+            margin-bottom: 1rem;
+        }
+        
+        .profile-contacts {
+            margin-top: 1rem;
+        }
+        
+        .profile-contacts a {
+            color: #2e8b57;
+            text-decoration: none;
+            margin-right: 1rem;
+        }
+        
+        .profile-contacts a:hover {
+            text-decoration: underline;
+        }
+        
+        /* レスポンシブデザイン */
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+            
+            .main-content {
+                margin-left: 0;
+                width: 100%;
+            }
+            
+            .profile-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .profile-image {
+                margin-right: 0;
+                margin-bottom: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- サイドバー -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h1>山田 太郎</h1> <!-- ここで名前を変更できます -->
+            <p>AI研究者 | データサイエンティスト</p> <!-- ここで肩書きを変更できます -->
+        </div>
+        <div class="sidebar-nav">
+            <div class="nav-item active" data-target="profile">プロフィール</div>
+            <div class="nav-item" data-target="papers">論文</div>
+            <div class="nav-item" data-target="models">公開モデル</div>
+            <div class="nav-item" data-target="datasets">データセット</div>
+            <div class="nav-item" data-target="resources">公開資料</div>
+        </div>
+    </div>
+    
+    <!-- メインコンテンツエリア -->
+    <div class="main-content">
+        <!-- プロフィールセクション -->
+        <section id="profile" class="content-section active">
+            <h2 class="section-title">プロフィール</h2>
+            <div class="profile-container">
+                <div class="profile-image">
+                    <!-- ここで画像を変更できます -->
+                    <img src="/api/placeholder/400/400" alt="プロフィール画像">
+                </div>
+                <div class="profile-text">
+                    <h2>山田 太郎</h2> <!-- ここで名前を変更できます -->
+                    <p>AI研究者 | データサイエンティスト</p> <!-- ここで肩書きを変更できます -->
+                    <p>
+                        <!-- ここで自己紹介を変更できます -->
+                        私は機械学習とデータサイエンスの分野で10年以上の経験を持つ研究者です。特に自然言語処理と画像認識の分野に専門性を持ち、AIの倫理的応用に関する研究を行っています。
+                    </p>
+                    <div class="profile-contacts">
+                        <!-- ここで連絡先情報を変更できます -->
+                        <a href="mailto:example@example.com">Eメール</a>
+                        <a href="https://github.com/username">GitHub</a>
+                        <a href="https://twitter.com/username">Twitter</a>
+                        <a href="https://linkedin.com/in/username">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>経歴</h3>
+                <!-- ここで経歴を変更できます -->
+                <p><strong>2020-現在</strong> - XYZ大学 AI研究所 准教授</p>
+                <p><strong>2015-2020</strong> - ABC企業 シニアデータサイエンティスト</p>
+                <p><strong>2010-2015</strong> - DEF大学 助教</p>
+            </div>
+            
+            <div class="card">
+                <h3>研究分野</h3>
+                <!-- ここで研究分野を変更できます -->
+                <p>自然言語処理、コンピュータビジョン、機械学習の倫理、マルチモーダルAI</p>
+            </div>
+            
+            <div class="card">
+                <h3>学歴</h3>
+                <!-- ここで学歴を変更できます -->
+                <p><strong>2010</strong> - DEF大学 コンピュータサイエンス博士</p>
+                <p><strong>2005</strong> - GHI大学 情報科学修士</p>
+                <p><strong>2003</strong> - JKL大学 コンピュータサイエンス学士</p>
+            </div>
+        </section>
+        
+        <!-- 論文セクション -->
+        <section id="papers" class="content-section">
+            <h2 class="section-title">論文</h2>
+            
+            <!-- ここで論文情報を変更できます -->
+            <div class="card">
+                <h3>モダンな自然言語処理モデルの倫理的側面の検討</h3>
+                <p>大規模言語モデルの倫理的側面と社会的影響について分析した研究。バイアス軽減と透明性向上のための新しいフレームワークを提案。</p>
+                <div class="card-meta">
+                    <div class="card-tags">
+                        <span>NLP</span>
+                        <span>AI倫理</span>
+                        <span>LLM</span>
+                    </div>
+                    <div class="card-link">
+                        <a href="#">論文を読む →</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>マルチモーダル学習における言語と視覚情報の統合手法</h3>
+                <p>テキストと画像データを効果的に組み合わせる新しいアプローチを提案。クロスモーダル理解の精度を25%向上させることに成功。</p>
+                <div class="card-meta">
+                    <div class="card-tags">
+                        <span>マルチモーダル</span>
+                        <span>コンピュータビジョン</span>
+                        <span>NLP</span>
+                    </div>
+                    <div class="card-link">
+                        <a href="#">論文を読む →</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>小規模データセットにおける深層学習モデルの効率的な訓練方法</h3>
+                <p>限られたデータ量でも高性能な深層学習モデルを構築するための新しい訓練手法を開発。転移学習とデータ拡張を組み合わせたアプローチ。</p>
+                <div class="card-meta">
+                    <div class="card-tags">
+                        <span>深層学習</span>
+                        <span>少数サンプル学習</span>
+                        <span>転移学習</span>
+                    </div>
+                    <div class="card-link">
+                        <a href="#">論文を読む →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 公開モデルセクション -->
+        <section id="models" class="content-section">
+            <h2 class="section-title">公開モデル</h2>
+            
+            <!-- ここでモデル情報を変更できます -->
+            <div class="card">
+                <h3>EfficientVision-1.0</h3>
+                <p>軽量で効率的な画像認識モデル。エッジデバイスでの実行に最適化され、従来のモデルと比較して50%少ないパラメータ数で同等の精度を実現。</p>
+                <div class="card-meta">
+                    <div class="card-tags">
+                        <span>コンピュータビジョン</span>
+                        <span>軽量モデル</span>
+                        <span>エッジAI</span>
+                    </div>
+                    <div class="card-link">
+                        <a href="#">GitHubリポジトリ →</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>JapaneseNLP-Base</h3>
+                <p>日本語テキスト処理のための基盤モデル。形態素解析、固有表現抽出、感情分析などの複数のタスクに対応。</p>
+                <div class="card-meta">
+                    <div class="card-tags">
+                        <span>NLP</span>
+                        <span>日本語</span>
+                        <span>事前学習モデル</span>
+                    </div>
+                    <div class="card-link">
+                        <a href="#">GitHubリポジトリ →</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>ETHIcalLLM</h3>
+                <p>倫理的配慮を組み込んだ大規模言語モデル。バイアス検出と軽減のための特別なメカニズムを備え、透明性と説明可能性を重視。</p>
+                <div class="card-meta">
+                    <div class="card-tags">
+                        <span>LLM</span>
+                        <span>AI倫理</span>
+                        <span>説明可能AI</span>
+                    </div>
+                    <div class="card-link">
+                        <a href="#">GitHubリポジトリ →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- データセットセクション -->
+        <section id="datasets" class="content-section">
+            <h2 class="section-title">公開データセット</h2>
+            
+            <!-- ここでデータセット情報を変更できます -->
+            <div class="card">
+                <h3>JapaneseEmotionText-10K</h3>
+                <p>日本語テキストの感情分析のためのデータセット。1万件の多様なテキストに対して、7種類の感情ラベルが付与されている。</p>
+                <div class="card-meta">
+                    <div class="card-tags">
+                        <span>感情分析</span>
+                        <span>日本語</span>
+                        <span>テキスト</span>
+                    </div>
+                    <div class="card-link">
+                        <a href="#">データセットを入手 →</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>MultiModalHealth-Dataset</h3>
+                <p>健康関連の画像とテキストを組み合わせたマルチモーダルデータセット。医療AIの研究開発に活用可能。</p>
+                <div class="card-meta">
+                    <div class="card-tags">
+                        <span>マルチモーダル</span>
+                        <span>医療</span>
+                        <span>健康</span>
+                    </div>
+                    <div class="card-link">
+                        <a href="#">データセットを入手 →</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>EthicalAI-Benchmark</h3>
+                <p>AIモデルの倫理的側面を評価するためのベンチマークデータセット。バイアス、公平性、透明性などの観点から評価が可能。</p>
+                <div class="card-meta">
+                    <div class="card-tags">
+                        <span>AI倫理</span>
+                        <span>ベンチマーク</span>
+                        <span>公平性</span>
+                    </div>
+                    <div class="card-link">
+                        <a href="#">データセットを入手 →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 公開資料セクション -->
+        <section id="resources" class="content-section">
+            <h2 class="section-title">公開資料</h2>
+            
+            <!-- ここで公開資料情報を変更できます -->
+            <div class="card">
+                <h3>AI倫理入門ガイド</h3>
+                <p>AIの倫理的側面について初心者向けに解説した包括的なガイド。実例と事例研究を含む。</p>
+                <div class="card-meta">
+                    <div class="card-tags">
+                        <span>AI倫理</span>
+                        <span>教育</span>
+                        <span>入門</span>
+                    </div>
+                    <div class="card-link">
+                        <a href="#">ダウンロード →</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>深層学習実践ワークショップ資料</h3>
+                <p>PyTorchを使った深層学習の実践的なワークショップの資料一式。初心者から中級者向け。</p>
+                <div class="card-meta">
+                    <div class="card-tags">
+                        <span>深層学習</span>
+                        <span>PyTorch</span>
+                        <span>ワークショップ</span>
+                    </div>
+                    <div class="card-link">
+                        <a href="#">ダウンロード →</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>マルチモーダルAI開発ガイドライン</h3>
+                <p>テキストと画像を組み合わせたAIシステムの開発における技術的および倫理的ガイドライン。</p>
+                <div class="card-meta">
+                    <div class="card-tags">
+                        <span>マルチモーダル</span>
+                        <span>ガイドライン</span>
+                        <span>開発</span>
+                    </div>
+                    <div class="card-link">
+                        <a href="#">ダウンロード →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <script>
+        // ナビゲーション機能
+        document.addEventListener('DOMContentLoaded', function() {
+            const navItems = document.querySelectorAll('.nav-item');
+            const contentSections = document.querySelectorAll('.content-section');
+            
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    // アクティブなナビゲーションアイテムを更新
+                    navItems.forEach(nav => nav.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // 対応するコンテンツを表示
+                    const targetId = this.getAttribute('data-target');
+                    contentSections.forEach(section => {
+                        section.classList.remove('active');
+                        if (section.id === targetId) {
+                            section.classList.add('active');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
