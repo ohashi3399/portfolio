@@ -283,7 +283,7 @@
             <div class="card">
                 <h3>経験分野</h3>
                 <!-- ここで研究分野を変更できます -->
-                <p>光学文字認識、文法誤り訂正、マルチモーダル対話システム、言語モデルの安全性アライメント、言語モデルの強化学習</p>
+                <p>生体信号処理、光学文字認識、文法誤り訂正、マルチモーダル対話システム、言語モデルの安全性アライメント、言語モデルの強化学習</p>
             </div>
             
             <div class="card">
@@ -301,7 +301,7 @@
             
             <!-- ここで論文情報を変更できます -->
             <div class="card">
-                <h3>嗜好データセットの学習に基づく応答文のアライメント ‐日本語大規模言語モデルへの適用と安全性の評価‐</h3>
+                <h3>嗜好データセットの学習に基づく応答文のアライメント  日本語大規模言語モデルへの適用と安全性の評価 (NLP2024, 口頭発表)</h3>
                 <p>7B級の日本語大規模言語モデルの安全性を評価し、言語モデルの応答の安全性を向上させる方法を示した研究。</p>
                 <div class="card-meta">
                     <div class="card-tags">
@@ -315,35 +315,6 @@
                 </div>
             </div>
             
-            <div class="card">
-                <h3>マルチモーダル学習における言語と視覚情報の統合手法</h3>
-                <p>テキストと画像データを効果的に組み合わせる新しいアプローチを提案。クロスモーダル理解の精度を25%向上させることに成功。</p>
-                <div class="card-meta">
-                    <div class="card-tags">
-                        <span>マルチモーダル</span>
-                        <span>コンピュータビジョン</span>
-                        <span>NLP</span>
-                    </div>
-                    <div class="card-link">
-                        <a href="#">論文を読む →</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="card">
-                <h3>小規模データセットにおける深層学習モデルの効率的な訓練方法</h3>
-                <p>限られたデータ量でも高性能な深層学習モデルを構築するための新しい訓練手法を開発。転移学習とデータ拡張を組み合わせたアプローチ。</p>
-                <div class="card-meta">
-                    <div class="card-tags">
-                        <span>深層学習</span>
-                        <span>少数サンプル学習</span>
-                        <span>転移学習</span>
-                    </div>
-                    <div class="card-link">
-                        <a href="#">論文を読む →</a>
-                    </div>
-                </div>
-            </div>
         </section>
         
         <!-- 公開モデルセクション -->
@@ -352,49 +323,52 @@
             
             <!-- ここでモデル情報を変更できます -->
             <div class="card">
-                <h3>EfficientVision-1.0</h3>
-                <p>軽量で効率的な画像認識モデル。エッジデバイスでの実行に最適化され、従来のモデルと比較して50%少ないパラメータ数で同等の精度を実現。</p>
-                <div class="card-meta">
-                    <div class="card-tags">
-                        <span>コンピュータビジョン</span>
-                        <span>軽量モデル</span>
-                        <span>エッジAI</span>
-                    </div>
-                    <div class="card-link">
-                        <a href="#">GitHubリポジトリ →</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="card">
-                <h3>JapaneseNLP-Base</h3>
-                <p>日本語テキスト処理のための基盤モデル。形態素解析、固有表現抽出、感情分析などの複数のタスクに対応。</p>
-                <div class="card-meta">
-                    <div class="card-tags">
-                        <span>NLP</span>
-                        <span>日本語</span>
-                        <span>事前学習モデル</span>
-                    </div>
-                    <div class="card-link">
-                        <a href="#">GitHubリポジトリ →</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="card">
-                <h3>ETHIcalLLM</h3>
-                <p>倫理的配慮を組み込んだ大規模言語モデル。バイアス検出と軽減のための特別なメカニズムを備え、透明性と説明可能性を重視。</p>
+                <h3>Tora-7B-v0.1</h3>
+                <p>Task Arithmeticをモデルに対して適用するTask Vectorを用いて英語LLMのインストラクション能力を、学習なしに日本語LLMに転用したモデルです。</p>
                 <div class="card-meta">
                     <div class="card-tags">
                         <span>LLM</span>
-                        <span>AI倫理</span>
-                        <span>説明可能AI</span>
+                        <span>Chat Vector</span>
+                        <span>Task Arithmetic</span>
                     </div>
                     <div class="card-link">
-                        <a href="#">GitHubリポジトリ →</a>
+                        <a href="https://huggingface.co/ryota39/Tora-7B-v0.1">モデルカード →</a>
                     </div>
                 </div>
             </div>
+
+            <div class="card">
+                <h3>Tanuki-8B-dpo-v1.0</h3>
+                <p>GENIAC 松尾研 LLM開発プロジェクトのもと、一般公募により集まった有志の参加者（企業所属、学生、研究者等）が開発を実施しました。定量評価と人手評価の両方で、ChatGPT3.5-turboを上回る性能を記録しました。データセットの構築と事後学習を主に担当しました。</p>
+                <div class="card-meta">
+                    <div class="card-tags">
+                        <span>LLM</span>
+                        <span>日本語</span>
+                        <span>事後学習</span>
+                        <span>グループ開発</span>
+                    </div>
+                    <div class="card-link">
+                        <a href="https://huggingface.co/weblab-GENIAC/Tanuki-8B-dpo-v1.0">モデルカード →</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>Tanuki-8x8B-dpo-v1.0</h3>
+                <p>GENIAC 松尾研 LLM開発プロジェクトのもと、一般公募により集まった有志の参加者（企業所属、学生、研究者等）が開発を実施しました。定量評価と人手評価の両方で、ChatGPT3.5-turboを上回る性能を記録しました。データセットの構築と事後学習を主に担当しました。</p>
+                <div class="card-meta">
+                    <div class="card-tags">
+                        <span>LLM</span>
+                        <span>日本語</span>
+                        <span>事後学習</span>
+                        <span>グループ開発</span>
+                    </div>
+                    <div class="card-link">
+                        <a href="https://huggingface.co/weblab-GENIAC/Tanuki-8x8B-dpo-v1.0">モデルカード →</a>
+                    </div>
+                </div>
+            </div>
+            
         </section>
         
         <!-- データセットセクション -->
@@ -403,49 +377,65 @@
             
             <!-- ここでデータセット情報を変更できます -->
             <div class="card">
-                <h3>JapaneseEmotionText-10K</h3>
-                <p>日本語テキストの感情分析のためのデータセット。1万件の多様なテキストに対して、7種類の感情ラベルが付与されている。</p>
+                <h3>OpenBookQA-Japanese-masked</h3>
+                <p>与えられた問題に対して4つの選択肢から答えを選択するデータセット</p>
                 <div class="card-meta">
                     <div class="card-tags">
-                        <span>感情分析</span>
-                        <span>日本語</span>
-                        <span>テキスト</span>
+                        <span>翻訳</span>
+                        <span>多肢選択問題</span>
+                        <span>事後学習データセット</span>
                     </div>
                     <div class="card-link">
-                        <a href="#">データセットを入手 →</a>
+                        <a href="https://huggingface.co/datasets/weblab-GENIAC/OpenBookQA-Japanese-masked">データセットカード →</a>
                     </div>
                 </div>
             </div>
             
             <div class="card">
-                <h3>MultiModalHealth-Dataset</h3>
-                <p>健康関連の画像とテキストを組み合わせたマルチモーダルデータセット。医療AIの研究開発に活用可能。</p>
+                <h3>Open-Platypus-Japanese-masked</h3>
+                <p>LLMの数学能力と推論能力を向上させるために作成したデータセット</p>
                 <div class="card-meta">
                     <div class="card-tags">
-                        <span>マルチモーダル</span>
-                        <span>医療</span>
-                        <span>健康</span>
+                        <span>翻訳</span>
+                        <span>数学</span>
+                        <span>事後学習データセット</span>
                     </div>
                     <div class="card-link">
-                        <a href="#">データセットを入手 →</a>
+                        <a href="https://huggingface.co/datasets/weblab-GENIAC/Open-Platypus-Japanese-masked">データセットカード →</a>
                     </div>
                 </div>
             </div>
             
             <div class="card">
-                <h3>EthicalAI-Benchmark</h3>
-                <p>AIモデルの倫理的側面を評価するためのベンチマークデータセット。バイアス、公平性、透明性などの観点から評価が可能。</p>
+                <h3>aya-ja-nemotron-dpo-masked</h3>
+                <p>LLMの推論能力を向上させるためのデータセット。340B級のモデルで回答を再生成して構築しました。</p>
                 <div class="card-meta">
                     <div class="card-tags">
-                        <span>AI倫理</span>
-                        <span>ベンチマーク</span>
-                        <span>公平性</span>
+                        <span>合成データセット</span>
+                        <span>Nemotron-4-340B-Instruct</span>
+                        <span>事後学習データセット</span>
                     </div>
                     <div class="card-link">
-                        <a href="#">データセットを入手 →</a>
+                        <a href="https://huggingface.co/datasets/weblab-GENIAC/aya-ja-nemotron-dpo-masked">データセットカード →</a>
                     </div>
                 </div>
             </div>
+
+            <div class="card">
+                <h3>aya-ja-evol-instruct-calm3-dpo-masked</h3>
+                <p>LLMの推論能力を向上させるためのデータセット。質問文をEvol-Instructという手法で進化させた後、calm3-22b-chatで応答文を再生成して構築しました。</p>
+                <div class="card-meta">
+                    <div class="card-tags">
+                        <span>合成嗜好データセット</span>
+                        <span>Evol-Instruct</span>
+                        <span>事後学習データセット</span>Evol-Instruct
+                    </div>
+                    <div class="card-link">
+                        <a href="https://huggingface.co/datasets/weblab-GENIAC/aya-ja-nemotron-dpo-masked">データセットカード →</a>
+                    </div>
+                </div>
+            </div>
+
         </section>
         
         <!-- 公開資料セクション -->
@@ -468,38 +458,6 @@
                 </div>
             </div>
             
-            <div class="card">
-                <h3>深層学習実践ワークショップ資料</h3>
-                <p>PyTorchを使った深層学習の実践的なワークショップの資料一式。初心者から中級者向け。</p>
-                <div class="card-meta">
-                    <div class="card-tags">
-                        <span>深層学習</span>
-                        <span>PyTorch</span>
-                        <span>ワークショップ</span>
-                    </div>
-                    <div class="card-link">
-                        <a href="#">ダウンロード →</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="card">
-                <h3>マルチモーダルAI開発ガイドライン</h3>
-                <p>テキストと画像を組み合わせたAIシステムの開発における技術的および倫理的ガイドライン。</p>
-                <div class="card-meta">
-                    <div class="card-tags">
-                        <span>マルチモーダル</span>
-                        <span>ガイドライン</span>
-                        <span>開発</span>
-                    </div>
-                    <div class="card-link">
-                        <a href="#">ダウンロード →</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-    
     <script>
         // ナビゲーション機能
         document.addEventListener('DOMContentLoaded', function() {
