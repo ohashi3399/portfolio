@@ -3,484 +3,388 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ポートフォリオ</title> <!-- ここでサイトのタイトルを変更できます -->
+    <title>Ryota Mitsuhashi | 三橋 亮太</title>
+    <meta name="description" content="Ryota Mitsuhashi — Research Engineer working on natural language generation and reinforcement learning for large language models.">
     <style>
-        /* 全体のスタイル */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
         }
-        
+
+        :root {
+            --text: #1a1a1a;
+            --text-sub: #555;
+            --link: #0b5394;
+            --rule: #ddd;
+            --accent: #1B4D3E;
+        }
+
+        html {
+            font-size: 16px;
+        }
+
         body {
-            display: flex;
-            background-color: #f8f9fa;
-            color: #333;
-            min-height: 100vh;
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            color: var(--text);
+            background-color: #fff;
+            line-height: 1.7;
         }
-        
-        /* サイドバーのスタイル */
-        .sidebar {
-            width: 250px;
-            background-color: #1B4D3E;
-            /*background-color: #1B4D3E; /* モダンな緑色 - 好みに合わせて調整可能 */
-            /*color: white;*/
-            color: #FEFAE0;
-            padding: 2rem 0;
-            height: 100vh;
-            position: fixed;
-            overflow-y: auto;
+
+        main {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem 4rem;
         }
-        
-        .sidebar-header {
-            padding: 0 1.5rem 2rem 1.5rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .sidebar-header h1 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .sidebar-header p {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-        
-        .sidebar-nav {
-            padding: 1.5rem;
-        }
-        
-        .nav-item {
-            margin-bottom: 1rem;
-            cursor: pointer;
-            padding: 0.75rem;
-            border-radius: 4px;
-            transition: background-color 0.3s;
-        }
-        
-        .nav-item:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-        
-        .nav-item.active {
-            background-color: rgba(255, 255, 255, 0.2);
-            font-weight: bold;
-        }
-        
-        /* メインコンテンツエリアのスタイル */
-        .main-content {
-            flex: 1;
-            padding: 2rem;
-            margin-left: 250px;
-            width: calc(100% - 250px);
-        }
-        
-        .content-section {
-            display: none;
-            animation: fadeIn 0.5s;
-        }
-        
-        .content-section.active {
-            display: block;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        .section-title {
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid #1B4D3E;
-            color: #1B4D3E;
-        }
-        
-        /* カードコンポーネントのスタイル */
-        .card {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
-        
-        .card h3 {
-            color: #1B4D3E;
-            margin-bottom: 1rem;
-        }
-        
-        .card p {
-            margin-bottom: 1rem;
-            line-height: 1.6;
-        }
-        
-        .card-meta {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.9rem;
-            color: #666;
-            border-top: 1px solid #eee;
-            padding-top: 1rem;
-        }
-        
-        .card-tags span {
-            display: inline-block;
-            background-color: rgba(46, 139, 87, 0.1);
-            color: #1B4D3E;
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
-            margin-right: 0.5rem;
-            font-size: 0.8rem;
-        }
-        
-        .card-link a {
-            color: #1B4D3E;
+
+        a {
+            color: var(--link);
             text-decoration: none;
-            display: inline-flex;
-            align-items: center;
         }
-        
-        .card-link a:hover {
+
+        a:hover {
             text-decoration: underline;
         }
-        
-        /* プロフィールセクションのスタイル */
-        .profile-container {
+
+        /* Header */
+        .header {
             display: flex;
-            margin-bottom: 2rem;
+            align-items: center;
+            gap: 1.75rem;
+            margin-bottom: 1rem;
         }
-        
-        .profile-image {
-            width: 200px;
-            height: 200px;
+
+        .header-photo {
+            width: 110px;
+            height: 110px;
             border-radius: 50%;
-            background-color: #e9ecef; /* プレースホルダー色 */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 2rem;
-            overflow: hidden;
-        }
-        
-        .profile-image img {
-            width: 100%;
-            height: 100%;
             object-fit: cover;
+            flex-shrink: 0;
         }
-        
-        .profile-text {
-            flex: 1;
+
+        .header h1 {
+            font-size: 1.7rem;
+            font-weight: 600;
+            letter-spacing: 0.01em;
         }
-        
-        .profile-text h2 {
-            color: #1B4D3E;
-            margin-bottom: 1rem;
+
+        .header .name-ja {
+            font-size: 1rem;
+            color: var(--text-sub);
         }
-        
-        .profile-contacts {
-            margin-top: 1rem;
+
+        .header .role {
+            margin-top: 0.35rem;
+            font-size: 0.95rem;
+            color: var(--text-sub);
         }
-        
-        .profile-contacts a {
-            color: #1B4D3E;
-            text-decoration: none;
-            margin-right: 1rem;
+
+        .contact {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-sub);
         }
-        
-        .profile-contacts a:hover {
-            text-decoration: underline;
+
+        .contact span + span::before {
+            content: "·";
+            margin: 0 0.5rem;
+            color: var(--rule);
         }
-        
-        /* レスポンシブデザイン */
-        @media (max-width: 768px) {
-            body {
+
+        /* Sections */
+        section {
+            margin-top: 2.75rem;
+        }
+
+        h2 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            padding-bottom: 0.4rem;
+            border-bottom: 1px solid var(--rule);
+            margin-bottom: 1.1rem;
+        }
+
+        h2 .en {
+            color: var(--accent);
+        }
+
+        h2 .ja {
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: var(--text-sub);
+            margin-left: 0.6rem;
+        }
+
+        .bilingual .ja {
+            display: block;
+            font-size: 0.92rem;
+            color: var(--text-sub);
+            margin-top: 0.3rem;
+        }
+
+        /* Publication list */
+        ol.pub-list {
+            list-style: none;
+        }
+
+        ol.pub-list > li {
+            margin-bottom: 1.4rem;
+        }
+
+        .pub-title {
+            font-weight: 600;
+        }
+
+        .pub-authors {
+            font-size: 0.92rem;
+            color: var(--text-sub);
+        }
+
+        .pub-venue {
+            font-size: 0.92rem;
+        }
+
+        .pub-venue em {
+            font-style: italic;
+        }
+
+        .pub-links {
+            font-size: 0.9rem;
+        }
+
+        /* Generic item list (OSS, talks, experience) */
+        ul.item-list {
+            list-style: none;
+        }
+
+        ul.item-list > li {
+            margin-bottom: 1.1rem;
+        }
+
+        .item-head {
+            font-weight: 600;
+        }
+
+        .item-desc {
+            font-size: 0.95rem;
+        }
+
+        .item-desc .ja {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--text-sub);
+        }
+
+        .note {
+            font-size: 0.9rem;
+            color: var(--text-sub);
+            margin-bottom: 1.1rem;
+        }
+
+        /* Timeline (experience / education) */
+        dl.timeline {
+            display: grid;
+            grid-template-columns: 8.5rem 1fr;
+            row-gap: 0.6rem;
+        }
+
+        dl.timeline dt {
+            color: var(--text-sub);
+            font-size: 0.92rem;
+            padding-top: 0.1rem;
+        }
+
+        dl.timeline dd .ja {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--text-sub);
+        }
+
+        h3.subhead {
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 1.4rem 0 0.8rem;
+        }
+
+        footer {
+            margin-top: 3.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--rule);
+            font-size: 0.85rem;
+            color: var(--text-sub);
+        }
+
+        @media (max-width: 600px) {
+            .header {
                 flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
             }
-            
-            .sidebar {
-                width: 100%;
-                height: auto;
-                position: relative;
+
+            dl.timeline {
+                grid-template-columns: 1fr;
+                row-gap: 0.15rem;
             }
-            
-            .main-content {
-                margin-left: 0;
-                width: 100%;
-            }
-            
-            .profile-container {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .profile-image {
-                margin-right: 0;
-                margin-bottom: 1.5rem;
+
+            dl.timeline dd {
+                margin-bottom: 0.6rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- サイドバー -->
-    <div class="sidebar">
-        <div class="sidebar-header">
-            <h1>kaeru-0.5B</h1> <!-- ここで名前を変更できます -->
-            <p>リサーチエンジニア</p> <!-- ここで肩書きを変更できます -->
-        </div>
-        <div class="sidebar-nav">
-            <div class="nav-item active" data-target="profile">プロフィール</div>
-            <div class="nav-item" data-target="papers">論文</div>
-            <div class="nav-item" data-target="models">公開モデル</div>
-            <div class="nav-item" data-target="datasets">公開データセット</div>
-            <div class="nav-item" data-target="resources">公開資料</div>
-        </div>
-    </div>
-    
-    <!-- メインコンテンツエリア -->
-    <div class="main-content">
-        <!-- プロフィールセクション -->
-        <section id="profile" class="content-section active">
-            <h2 class="section-title">プロフィール</h2>
-            <div class="profile-container">
-                <div class="profile-image">
-                    <!-- ここで画像を変更できます -->
-                    <img src="./icon/icon.png" alt="プロフィール画像">
-                </div>
-                <div class="profile-text">
-                    <h2>kaeru-0.5B</h2> <!-- ここで名前を変更できます -->
-                    <p>リサーチエンジニア</p> <!-- ここで肩書きを変更できます -->
-                    <p>
-                        <!-- ここで自己紹介を変更できます -->
-                        広告会社でリサーチエンジニアとして働いています。文章生成と言語モデルの強化学習に専門性を持ち、特にオンプレミスな言語モデルの実応用に注力しています。
-                    </p>
-                    <div class="profile-contacts">
-                        <!-- ここで連絡先情報を変更できます -->
-                        <a href="mailto:example@example.com">Eメール</a>
-                        <a href="https://github.com/ohashi3399">GitHub</a>
-                        <a href="https://x.com/mryo39">X</a>
-                        <a href="https://huggingface.co/ryota39">HuggingFace</a>
-                    </div>
-                </div>
+    <main>
+        <header class="header">
+            <img class="header-photo" src="./icon/icon.png" alt="Portrait of Ryota Mitsuhashi">
+            <div>
+                <h1>Ryota Mitsuhashi <span class="name-ja">三橋 亮太</span></h1>
+                <p class="role">Research Engineer, CyberAgent, Inc. / 株式会社サイバーエージェント リサーチエンジニア</p>
+                <p class="contact">
+                    <span>ryota_mitsuhashi_xa [at] cyberagent.co.jp</span>
+                    <span><a href="https://github.com/ohashi3399">GitHub</a></span>
+                    <span><a href="https://huggingface.co/ryota39">Hugging Face</a></span>
+                    <span><a href="https://x.com/mryo39">X</a></span>
+                </p>
             </div>
-            
-            <div class="card">
-                <h3>経歴</h3>
-                <!-- ここで経歴を変更できます -->
-                <p><strong>2024-現在</strong> - 株式会社サイバーエージェント リサーチエンジニア</p>
-                <p><strong>2021-2024</strong> - 株式会社本田技術研究所 スタッフエンジニア</p>
-                <p><strong>2019-2021</strong> - TOPPANホールディングス 研究員</p>
-            </div>
-            
-            <div class="card">
-                <h3>経験分野</h3>
-                <!-- ここで研究分野を変更できます -->
-                <p>生体信号処理、光学文字認識、文法誤り訂正、マルチモーダル対話システム、言語モデルの安全性アライメント、言語モデルの強化学習</p>
-            </div>
-            
-            <div class="card">
-                <h3>学歴</h3>
-                <!-- ここで学歴を変更できます -->
-                <p><strong>2017-2019</strong> - 千葉大学大学院 創成工学専攻 イメージング科学コース 修士前期過程修了</p>
-                <p><strong>2015-2017</strong> - 千葉大学 情報画像工学科 学士</p>
-                <p><strong>2010-2015</strong> - 国立茨城工業高等専門学校 電子制御工学科 準学士</p>
-            </div>
-        </section>
-        
-        <!-- 論文セクション -->
-        <section id="papers" class="content-section">
-            <h2 class="section-title">論文</h2>
-            
-            <!-- ここで論文情報を変更できます -->
-            <div class="card">
-                <h3>嗜好データセットの学習に基づく応答文のアライメント  日本語大規模言語モデルへの適用と安全性の評価 (2024/03, NLP2024, 口頭発表)</h3>
-                <p>7B級の日本語大規模言語モデルの安全性を評価し、言語モデルの応答の安全性を向上させる方法を示した研究。</p>
-                <div class="card-meta">
-                    <div class="card-tags">
-                        <span>NLP</span>
-                        <span>LLM</span>
-                        <span>AI倫理</span>
-                    </div>
-                    <div class="card-link">
-                        <a href="https://www.anlp.jp/proceedings/annual_meeting/2024/pdf_dir/D10-2.pdf">論文を読む →</a>
-                    </div>
-                </div>
-            </div>
-            
-        </section>
-        
-        <!-- 公開モデルセクション -->
-        <section id="models" class="content-section">
-            <h2 class="section-title">公開モデル</h2>
-            
-            <!-- ここでモデル情報を変更できます -->
-            <div class="card">
-                <h3>Tora-7B-v0.1 (2024/05)</h3>
-                <p>Task Arithmeticをモデルに適用するTask Vectorを用いて、英語LLMのインストラクション能力を追加学習なしに日本語LLMに転用したモデルです。</p>
-                <div class="card-meta">
-                    <div class="card-tags">
-                        <span>LLM</span>
-                        <span>Chat Vector</span>
-                        <span>Task Arithmetic</span>
-                    </div>
-                    <div class="card-link">
-                        <a href="https://huggingface.co/ryota39/Tora-7B-v0.1">モデルカード →</a>
-                    </div>
-                </div>
-            </div>
+        </header>
 
-            <div class="card">
-                <h3>Tanuki-8B-dpo-v1.0 (2024/08)</h3>
-                <p>GENIAC 松尾研 LLM開発プロジェクトのもと、一般公募により集まった有志の参加者（企業所属、学生、研究者等）が開発を実施しました。定量評価と人手評価の両方で、ChatGPT3.5-turboを上回る性能を記録しました。データセットの構築と事後学習を主に担当しました。</p>
-                <div class="card-meta">
-                    <div class="card-tags">
-                        <span>LLM</span>
-                        <span>日本語</span>
-                        <span>事後学習</span>
-                        <span>グループ開発</span>
-                    </div>
-                    <div class="card-link">
-                        <a href="https://huggingface.co/weblab-GENIAC/Tanuki-8B-dpo-v1.0">モデルカード →</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="card">
-                <h3>Tanuki-8x8B-dpo-v1.0 (2024/08)</h3>
-                <p>GENIAC 松尾研 LLM開発プロジェクトのもと、一般公募により集まった有志の参加者（企業所属、学生、研究者等）が開発を実施しました。定量評価と人手評価の両方で、ChatGPT3.5-turboを上回る性能を記録しました。データセットの構築と事後学習を主に担当しました。</p>
-                <div class="card-meta">
-                    <div class="card-tags">
-                        <span>LLM</span>
-                        <span>日本語</span>
-                        <span>事後学習</span>
-                        <span>グループ開発</span>
-                    </div>
-                    <div class="card-link">
-                        <a href="https://huggingface.co/weblab-GENIAC/Tanuki-8x8B-dpo-v1.0">モデルカード →</a>
-                    </div>
-                </div>
-            </div>
-            
+        <section id="about">
+            <h2><span class="en">About</span><span class="ja">概要</span></h2>
+            <p class="bilingual">
+                I am a research engineer at CyberAgent, Inc. My work focuses on natural language generation and reinforcement learning for large language models, with a particular interest in deploying on-premise language models in real-world applications.
+                <span class="ja">株式会社サイバーエージェントのリサーチエンジニアです。文章生成と言語モデルの強化学習を専門とし、特にオンプレミスな言語モデルの実応用に注力しています。</span>
+            </p>
         </section>
-        
-        <!-- データセットセクション -->
-        <section id="datasets" class="content-section">
-            <h2 class="section-title">公開データセット</h2>
-            
-            <!-- ここでデータセット情報を変更できます -->
-            <div class="card">
-                <h3>OpenBookQA-Japanese-masked (2024/08)</h3>
-                <p>与えられた問題に対して4つの選択肢から答えを選択するデータセットです。</p>
-                <div class="card-meta">
-                    <div class="card-tags">
-                        <span>翻訳</span>
-                        <span>多肢選択問題</span>
-                        <span>事後学習データセット</span>
-                    </div>
-                    <div class="card-link">
-                        <a href="https://huggingface.co/datasets/weblab-GENIAC/OpenBookQA-Japanese-masked">データセットカード →</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="card">
-                <h3>Open-Platypus-Japanese-masked (2024/08)</h3>
-                <p>LLMの数学能力と推論能力を向上させるために作成したデータセットです。</p>
-                <div class="card-meta">
-                    <div class="card-tags">
-                        <span>翻訳</span>
-                        <span>数学</span>
-                        <span>事後学習データセット</span>
-                    </div>
-                    <div class="card-link">
-                        <a href="https://huggingface.co/datasets/weblab-GENIAC/Open-Platypus-Japanese-masked">データセットカード →</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="card">
-                <h3>aya-ja-nemotron-dpo-masked (2024/08)</h3>
-                <p>LLMの推論能力を向上させるためのデータセットです。340B級のモデルで回答を再生成して構築しました。</p>
-                <div class="card-meta">
-                    <div class="card-tags">
-                        <span>合成データセット</span>
-                        <span>Nemotron-4-340B-Instruct</span>
-                        <span>事後学習データセット</span>
-                    </div>
-                    <div class="card-link">
-                        <a href="https://huggingface.co/datasets/weblab-GENIAC/aya-ja-nemotron-dpo-masked">データセットカード →</a>
-                    </div>
-                </div>
-            </div>
 
-            <div class="card">
-                <h3>aya-ja-evol-instruct-calm3-dpo-masked (2024/08)</h3>
-                <p>LLMの推論能力を向上させるためのデータセットです。質問文をEvol-Instructという手法で拡張した後、calm3-22b-chatで応答文を再生成して構築しました。</p>
-                <div class="card-meta">
-                    <div class="card-tags">
-                        <span>合成嗜好データセット</span>
-                        <span>Evol-Instruct</span>
-                        <span>事後学習データセット</span>Evol-Instruct
-                    </div>
-                    <div class="card-link">
-                        <a href="https://huggingface.co/datasets/weblab-GENIAC/aya-ja-nemotron-dpo-masked">データセットカード →</a>
-                    </div>
-                </div>
-            </div>
+        <section id="publications">
+            <h2><span class="en">Publications</span><span class="ja">論文</span></h2>
+            <ol class="pub-list">
+                <li>
+                    <div class="pub-title">"Who Is This User?" to "What Does This Purchase Mean?": A Deployed Pipeline for Semantic User Profiling at Bank Scale</div>
+                    <div class="pub-authors"><strong>Ryota Mitsuhashi</strong>, Tetsuro Morimura, Hirotake Ito</div>
+                    <div class="pub-venue"><em>IEEE International Conference on Data Mining (ICDM)</em>, 2026</div>
+                    <div class="pub-links"><a href="https://icdm2026.neu.edu.cn/">[conference]</a></div>
+                </li>
+                <li>
+                    <div class="pub-title">MO-GRPO: Mitigating Reward Hacking of Group Relative Policy Optimization on Multi-Objective Problems</div>
+                    <div class="pub-authors">Yuki Ichihara, Yuu Jinnai, Tetsuro Morimura, Mitsuki Sakamoto, <strong>Ryota Mitsuhashi</strong>, Eiji Uchibe</div>
+                    <div class="pub-venue"><em>Transactions of the Association for Computational Linguistics (TACL)</em>, 2024</div>
+                </li>
+            </ol>
 
+            <h3 class="subhead">Domestic Conferences / 国内会議</h3>
+            <ol class="pub-list">
+                <li>
+                    <div class="pub-title">嗜好データセットの学習に基づく応答文のアライメント — 日本語大規模言語モデルへの適用と安全性の評価</div>
+                    <div class="pub-venue">言語処理学会第30回年次大会 (NLP2024), 口頭発表, 2024</div>
+                    <div class="pub-links"><a href="https://www.anlp.jp/proceedings/annual_meeting/2024/pdf_dir/D10-2.pdf">[paper]</a></div>
+                </li>
+            </ol>
         </section>
-        
-        <!-- 公開資料セクション -->
-        <section id="resources" class="content-section">
-            <h2 class="section-title">公開資料</h2>
-            
-            <!-- ここで公開資料情報を変更できます -->
-            <div class="card">
-                <h3>Sake RAG  日本酒の知識に特化した対話システムは作れるか (2025/02)</h3>
-                <p>醸造協会誌に収録された日本酒の知識に特化した質問に回答できるシステムを実装した。2B級の大規模言語モデルとRAGを用いて、ベンチマークの構築からデモアプリの実装を行い、開発過程をまとめた。有志で開催している日本酒の勉強会で共有した。</p>
-                <div class="card-meta">
-                    <div class="card-tags">
-                        <span>LLM</span>
-                        <span>RAG</span>
-                        <span>日本酒</span>
+
+        <section id="open-source">
+            <h2><span class="en">Open-Source Activities</span><span class="ja">オープンソース活動</span></h2>
+            <p class="note">
+                The models and datasets below were built and released as personal open-source contributions, independent of my employer.
+                以下のモデル・データセットは、所属企業の業務とは独立した個人のオープンソース活動として構築・公開したものです。
+            </p>
+
+            <h3 class="subhead">Models / 公開モデル</h3>
+            <ul class="item-list">
+                <li>
+                    <div class="item-head"><a href="https://huggingface.co/ryota39/Tora-7B-v0.1">Tora-7B-v0.1</a> (2024)</div>
+                    <div class="item-desc">
+                        A Japanese LLM built with task arithmetic (chat vector), transferring instruction-following ability from an English LLM without additional training.
+                        <span class="ja">Task Vectorを用いたTask Arithmeticにより、英語LLMのインストラクション能力を追加学習なしに日本語LLMへ転用したモデル。</span>
                     </div>
-                    <div class="card-link">
-                        <a href="https://www.docswell.com/s/kaeru/ZP2XQ6-2025-02-26-004337">資料を読む</a>
+                </li>
+                <li>
+                    <div class="item-head"><a href="https://huggingface.co/weblab-GENIAC/Tanuki-8B-dpo-v1.0">Tanuki-8B-dpo-v1.0</a> / <a href="https://huggingface.co/weblab-GENIAC/Tanuki-8x8B-dpo-v1.0">Tanuki-8x8B-dpo-v1.0</a> (2024)</div>
+                    <div class="item-desc">
+                        Japanese LLMs developed by a volunteer community under the GENIAC LLM development project (Matsuo Lab). Outperformed GPT-3.5-turbo in both automatic and human evaluation. I led dataset construction and post-training.
+                        <span class="ja">GENIAC 松尾研LLM開発プロジェクトの有志コミュニティによる開発。定量評価・人手評価の双方でGPT-3.5-turboを上回る性能を記録。データセット構築と事後学習を主に担当。</span>
                     </div>
-                </div>
-            </div>
-            
-    <script>
-        // ナビゲーション機能
-        document.addEventListener('DOMContentLoaded', function() {
-            const navItems = document.querySelectorAll('.nav-item');
-            const contentSections = document.querySelectorAll('.content-section');
-            
-            navItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    // アクティブなナビゲーションアイテムを更新
-                    navItems.forEach(nav => nav.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // 対応するコンテンツを表示
-                    const targetId = this.getAttribute('data-target');
-                    contentSections.forEach(section => {
-                        section.classList.remove('active');
-                        if (section.id === targetId) {
-                            section.classList.add('active');
-                        }
-                    });
-                });
-            });
-        });
-    </script>
+                </li>
+            </ul>
+
+            <h3 class="subhead">Datasets / 公開データセット</h3>
+            <ul class="item-list">
+                <li>
+                    <div class="item-head"><a href="https://huggingface.co/datasets/weblab-GENIAC/OpenBookQA-Japanese-masked">OpenBookQA-Japanese-masked</a> (2024)</div>
+                    <div class="item-desc">
+                        A Japanese translation of OpenBookQA, a multiple-choice question-answering benchmark, for post-training.
+                        <span class="ja">4択の多肢選択式QAデータセットOpenBookQAを翻訳した事後学習用データセット。</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-head"><a href="https://huggingface.co/datasets/weblab-GENIAC/Open-Platypus-Japanese-masked">Open-Platypus-Japanese-masked</a> (2024)</div>
+                    <div class="item-desc">
+                        A translated dataset for improving mathematical and reasoning abilities of LLMs.
+                        <span class="ja">LLMの数学能力と推論能力の向上を目的に翻訳・構築した事後学習用データセット。</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-head"><a href="https://huggingface.co/datasets/weblab-GENIAC/aya-ja-nemotron-dpo-masked">aya-ja-nemotron-dpo-masked</a> (2024)</div>
+                    <div class="item-desc">
+                        A preference dataset with responses regenerated by Nemotron-4-340B-Instruct to improve reasoning ability.
+                        <span class="ja">Nemotron-4-340B-Instructで応答を再生成して構築した、推論能力向上のための嗜好データセット。</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-head"><a href="https://huggingface.co/datasets/weblab-GENIAC/aya-ja-evol-instruct-calm3-dpo-masked">aya-ja-evol-instruct-calm3-dpo-masked</a> (2024)</div>
+                    <div class="item-desc">
+                        A synthetic preference dataset built by evolving instructions with Evol-Instruct and regenerating responses with calm3-22b-chat.
+                        <span class="ja">Evol-Instructで質問文を拡張し、calm3-22b-chatで応答を再生成して構築した合成嗜好データセット。</span>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <section id="talks">
+            <h2><span class="en">Talks &amp; Articles</span><span class="ja">公開資料</span></h2>
+            <ul class="item-list">
+                <li>
+                    <div class="item-head"><a href="https://www.docswell.com/s/kaeru/ZP2XQ6-2025-02-26-004337">Sake RAG — 日本酒の知識に特化した対話システムは作れるか</a> (2025)</div>
+                    <div class="item-desc">
+                        A retrieval-augmented dialogue system specialized in sake knowledge, built with a 2B-scale LLM — from benchmark construction to a demo application.
+                        <span class="ja">醸造協会誌収録の知識をもとに、2B級LLMとRAGでベンチマーク構築からデモアプリ実装までを行い、開発過程をまとめた資料。</span>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <section id="experience">
+            <h2><span class="en">Experience</span><span class="ja">職歴</span></h2>
+            <dl class="timeline">
+                <dt>2024 – present</dt>
+                <dd>Research Engineer, CyberAgent, Inc.<span class="ja">株式会社サイバーエージェント リサーチエンジニア</span></dd>
+                <dt>2021 – 2024</dt>
+                <dd>Staff Engineer, Honda R&amp;D Co., Ltd.<span class="ja">株式会社本田技術研究所 スタッフエンジニア</span></dd>
+                <dt>2019 – 2021</dt>
+                <dd>Researcher, TOPPAN Holdings Inc.<span class="ja">TOPPANホールディングス 研究員</span></dd>
+            </dl>
+            <h3 class="subhead">Research Areas / 経験分野</h3>
+            <p class="bilingual">
+                Biosignal processing, optical character recognition, grammatical error correction, multimodal dialogue systems, safety alignment of language models, and reinforcement learning for language models.
+                <span class="ja">生体信号処理、光学文字認識、文法誤り訂正、マルチモーダル対話システム、言語モデルの安全性アライメント、言語モデルの強化学習。</span>
+            </p>
+        </section>
+
+        <section id="education">
+            <h2><span class="en">Education</span><span class="ja">学歴</span></h2>
+            <dl class="timeline">
+                <dt>2017 – 2019</dt>
+                <dd>M.Eng., Imaging Science, Graduate School of Science and Engineering, Chiba University<span class="ja">千葉大学大学院 創成工学専攻 イメージング科学コース 修士前期課程修了</span></dd>
+                <dt>2015 – 2017</dt>
+                <dd>B.Eng., Department of Information and Image Sciences, Chiba University<span class="ja">千葉大学 情報画像工学科 学士</span></dd>
+                <dt>2010 – 2015</dt>
+                <dd>Associate Degree, Department of Electronic Control Engineering, National Institute of Technology, Ibaraki College<span class="ja">国立茨城工業高等専門学校 電子制御工学科 準学士</span></dd>
+            </dl>
+        </section>
+
+        <footer>
+            © 2026 Ryota Mitsuhashi
+        </footer>
+    </main>
 </body>
 </html>
