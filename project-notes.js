@@ -26,6 +26,7 @@ const projectNotes = {
         clearTimeout(hideTimer);
         if (!current) return;
         current.tooltip.hidden = true;
+        current.connector.setAttribute('hidden', '');
         current.button.setAttribute('aria-expanded', 'false');
         current = null;
         tooltipHovered = false;
@@ -34,7 +35,7 @@ const projectNotes = {
 
     function position() {
         if (!current) return;
-        const { button, tooltip } = current;
+        const { button, tooltip, line, dot } = current;
         const rect = button.getBoundingClientRect();
         if (rect.bottom < 0 || rect.top > innerHeight) {
             hide();
@@ -43,18 +44,34 @@ const projectNotes = {
         const height = tooltip.offsetHeight;
         let left;
         let top;
+        const underlineY = rect.bottom + 3;
         if (innerWidth >= 1200) {
             left = document.querySelector('main').getBoundingClientRect().right + 24;
-            top = rect.top - 12;
+            top = underlineY - 24;
         } else {
             left = innerWidth - tooltip.offsetWidth - 16;
-            top = rect.bottom + 12;
-            if (top + height > innerHeight - 24) top = rect.top - height - 12;
+            top = rect.bottom + 24;
+            if (top + height > innerHeight - 24) top = rect.top - height - 24;
         }
         top = Math.max(24, Math.min(top, innerHeight - height - 24));
         tooltip.style.left = `${left}px`;
         tooltip.style.top = `${top}px`;
-        tooltip.style.setProperty('--arrow-top', `${Math.max(18, Math.min(rect.top + 14 - top, height - 30))}px`);
+        let endX;
+        let endY;
+        let path;
+        if (innerWidth >= 1200) {
+            endX = left;
+            endY = Math.max(top + 18, Math.min(underlineY, top + height - 18));
+            path = `M ${rect.left} ${underlineY} H ${left - 12} V ${endY} H ${endX}`;
+        } else {
+            // On narrow screens, fold the connector into the note's top/bottom edge.
+            endX = Math.max(left + 18, Math.min(rect.right, left + tooltip.offsetWidth - 18));
+            endY = top >= rect.bottom ? top : top + height;
+            path = `M ${rect.left} ${underlineY} H ${rect.right} V ${endY + (top >= rect.bottom ? -12 : 12)} H ${endX} V ${endY}`;
+        }
+        line.setAttribute('d', path);
+        dot.setAttribute('cx', endX);
+        dot.setAttribute('cy', endY);
     }
 
     function show(entry) {
@@ -62,6 +79,7 @@ const projectNotes = {
         if (current !== entry) hide();
         current = entry;
         entry.tooltip.hidden = false;
+        entry.connector.removeAttribute('hidden');
         entry.button.setAttribute('aria-expanded', 'true');
         position();
     }
@@ -103,7 +121,18 @@ const projectNotes = {
         content.append(label, text);
         tooltip.append(content);
         document.body.append(tooltip);
-        const entry = { button, tooltip };
+        const svgNamespace = 'http://www.w3.org/2000/svg';
+        const connector = document.createElementNS(svgNamespace, 'svg');
+        connector.classList.add('project-connector');
+        connector.setAttribute('aria-hidden', 'true');
+        connector.setAttribute('hidden', '');
+        const line = document.createElementNS(svgNamespace, 'path');
+        line.setAttribute('pathLength', '1');
+        const dot = document.createElementNS(svgNamespace, 'circle');
+        dot.setAttribute('r', '3.5');
+        connector.append(line, dot);
+        document.body.append(connector);
+        const entry = { button, tooltip, connector, line, dot };
         let touchWasOpen = false;
 
         button.addEventListener('pointerenter', (event) => {
