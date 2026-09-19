@@ -25,7 +25,7 @@
         }
 
         body {
-            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            font-family: Arial, "Helvetica Neue", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
             color: var(--text);
             background-color: #fff;
             line-height: 1.7;
@@ -75,15 +75,45 @@
         }
 
         .contact {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.25rem 0.75rem;
             margin-top: 0.5rem;
             font-size: 0.9rem;
             color: var(--text-sub);
         }
 
-        .contact span + span::before {
-            content: "·";
-            margin: 0 0.5rem;
-            color: var(--rule);
+        .contact-email {
+            overflow-wrap: anywhere;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 4px;
+        }
+
+        .social-link img {
+            width: 20px;
+            height: 20px;
+            opacity: 0.7;
+        }
+
+        .social-link:hover {
+            background-color: #f2f2f2;
+        }
+
+        a:focus-visible {
+            outline: 2px solid var(--link);
+            outline-offset: 3px;
+        }
+
+        .intro {
+            margin-top: 1.5rem;
         }
 
         /* Sections */
@@ -139,6 +169,8 @@
 
         .pub-links {
             font-size: 0.9rem;
+            font-weight: 400;
+            white-space: nowrap;
         }
 
         /* Generic item list (OSS, talks, experience) */
@@ -218,37 +250,32 @@
 <body>
     <main>
         <header class="header">
-            <img class="header-photo" src="./icon/icon.png" alt="Portrait of Ryota Mitsuhashi">
+            <img class="header-photo" src="./icon/icon.jpg" alt="Portrait of Ryota Mitsuhashi" width="110" height="110">
             <div>
                 <h1>Ryota Mitsuhashi</h1>
                 <p class="role">Research Engineer, CyberAgent, Inc.</p>
                 <p class="contact">
-                    <span>ryota_mitsuhashi_xa [at] cyberagent.co.jp</span>
-                    <span><a href="https://github.com/ohashi3399">GitHub</a></span>
-                    <span><a href="https://huggingface.co/ryota39">Hugging Face</a></span>
-                    <span><a href="https://x.com/mryo39">X</a></span>
+                    <span class="contact-email">ryota_mitsuhashi_xa [at] cyberagent.co.jp</span>
+                    <a class="social-link" href="https://github.com/ohashi3399" aria-label="GitHub" title="GitHub"><img src="./icon/github.svg" alt="" width="20" height="20"></a>
+                    <a class="social-link" href="https://huggingface.co/ryota39" aria-label="Hugging Face" title="Hugging Face"><img src="./icon/huggingface.svg" alt="" width="20" height="20"></a>
                 </p>
             </div>
         </header>
 
-        <section id="about">
-            <h2>About</h2>
-            <p class="bilingual">
-                I am a research engineer at CyberAgent, Inc. My work focuses on natural language generation and reinforcement learning for large language models, with a particular interest in deploying on-premise language models in real-world applications.
-            </p>
-        </section>
+        <p class="intro">
+            I am a research engineer at CyberAgent, Inc. My work spans research and development grounded in how language models work, as well as bringing these models into products.
+        </p>
 
         <section id="publications">
             <h2>Publications</h2>
             <ol class="pub-list">
                 <li>
-                    <div class="pub-title">"Who Is This User?" to "What Does This Purchase Mean?": A Deployed Pipeline for Semantic User Profiling at Bank Scale</div>
+                    <div class="pub-title">"Who Is This User?" to "What Does This Purchase Mean?": A Deployed Pipeline for Semantic User Profiling at Bank Scale <a class="pub-links" href="https://arxiv.org/abs/2609.19928">[arXiv]</a> <a class="pub-links" href="https://icdm2026.neu.edu.cn/">[conference]</a></div>
                     <div class="pub-authors"><u>Ryota Mitsuhashi</u>, Tetsuro Morimura, Hirotake Ito</div>
                     <div class="pub-venue"><em>IEEE International Conference on Data Mining (ICDM)</em>, 2026</div>
-                    <div class="pub-links"><a href="https://icdm2026.neu.edu.cn/">[conference]</a></div>
                 </li>
                 <li>
-                    <div class="pub-title">MO-GRPO: Mitigating Reward Hacking of Group Relative Policy Optimization on Multi-Objective Problems</div>
+                    <div class="pub-title">MO-GRPO: Mitigating Reward Hacking of Group Relative Policy Optimization on Multi-Objective Problems <a class="pub-links" href="https://arxiv.org/abs/2509.22047">[arXiv]</a></div>
                     <div class="pub-authors">Yuki Ichihara, Yuu Jinnai, Tetsuro Morimura, Mitsuki Sakamoto, <u>Ryota Mitsuhashi</u>, Eiji Uchibe</div>
                     <div class="pub-venue"><em>Transactions of the Association for Computational Linguistics (TACL)</em>, 2026</div>
                 </li>
@@ -257,11 +284,10 @@
             <h3 class="subhead">Domestic Conferences</h3>
             <ol class="pub-list">
                 <li>
-                    <div class="pub-title">Alignment of Responses Based on Preference Dataset Learning: Application to Japanese Large Language Models and Safety Evaluation</div>
+                    <div class="pub-title">Alignment of Responses Based on Preference Dataset Learning: Application to Japanese Large Language Models and Safety Evaluation <a class="pub-links" href="https://www.anlp.jp/proceedings/annual_meeting/2024/pdf_dir/D10-2.pdf">[paper]</a></div>
                     <div class="title-ja">嗜好データセットの学習に基づく応答文のアライメント — 日本語大規模言語モデルへの適用と安全性の評価</div>
                     <div class="pub-authors"><u>Ryota Mitsuhashi</u>, Toshiyuki Tanaka, Kentaro Yamada</div>
                     <div class="pub-venue">The 30th Annual Meeting of the Association for Natural Language Processing (NLP2024), Oral Presentation, 2024</div>
-                    <div class="pub-links"><a href="https://www.anlp.jp/proceedings/annual_meeting/2024/pdf_dir/D10-2.pdf">[paper]</a></div>
                 </li>
             </ol>
         </section>
@@ -346,11 +372,6 @@
                 <li><strong>Honda R&amp;D:</strong> Multimodal real-time dialogue systems.</li>
                 <li><strong>CyberAgent:</strong> Reward models; user attribute estimation.</li>
             </ul>
-        </section>
-
-        <section id="press-release">
-            <h2>Press Release</h2>
-            <p>To be appended.</p>
         </section>
 
         <section id="education">
