@@ -1,6 +1,6 @@
 // Edit these notes to add first-hand context for each project.
 const projectNotes = {
-    'bank-profiling': '数千万ユーザーの取引データをLLMで構造化し、自然言語で検索可能な意味的なタグを付与した取り組みです。銀行さん向けのプロダクトに導入済みの技術です。プロダクト導入・国際論文採択・複数特許出願・プレスリリースまで達成した事例です。',
+    'bank-profiling': '数千万ユーザーを保有する銀行様向けに、取引データをLLMで構造化し自然言語で検索可能なタグ付きDBに整えた取り組みです。約1年でプロダクト導入・国際論文採択・複数特許出願まで進めた事例です。',
     'mo-grpo': 'To be appended',
     'alignment': 'To be appended',
     'tora': 'To be appended',
@@ -112,13 +112,10 @@ const projectNotes = {
         tooltip.hidden = true;
         const content = document.createElement('div');
         content.className = 'project-tooltip-content';
-        const label = document.createElement('p');
-        label.className = 'project-tooltip-label';
-        label.textContent = 'PROJECT NOTES';
         const text = document.createElement('p');
         text.lang = key === 'bank-profiling' ? 'ja' : 'en';
         text.textContent = projectNotes[key];
-        content.append(label, text);
+        content.append(text);
         tooltip.append(content);
         document.body.append(tooltip);
         const svgNamespace = 'http://www.w3.org/2000/svg';

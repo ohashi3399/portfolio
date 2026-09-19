@@ -265,7 +265,7 @@
         }
 
         .project-tooltip:not([hidden]) {
-            animation: note-appear 160ms ease-out 360ms both;
+            animation: note-appear 80ms ease-out 160ms both;
         }
 
         .project-connector {
@@ -284,23 +284,23 @@
 
         .project-connector path {
             fill: none;
-            stroke: #111;
-            stroke-width: 1;
+            stroke: #000;
+            stroke-width: 2;
             stroke-dasharray: 1;
             stroke-dashoffset: 1;
         }
 
         .project-connector circle {
-            fill: #111;
+            fill: #000;
             opacity: 0;
         }
 
         .project-connector:not([hidden]) path {
-            animation: note-line 360ms ease-in-out forwards;
+            animation: note-line 160ms ease-out forwards;
         }
 
         .project-connector:not([hidden]) circle {
-            animation: note-appear 120ms ease-out 360ms forwards;
+            animation: note-appear 80ms ease-out 160ms forwards;
         }
 
         @keyframes note-line {
@@ -325,14 +325,6 @@
         .project-tooltip-content {
             max-height: calc(100dvh - 100px);
             overflow-y: auto;
-        }
-
-        .project-tooltip-label {
-            margin-bottom: 0.7rem;
-            color: #111;
-            font-size: 0.65rem;
-            font-weight: 700;
-            letter-spacing: 0.14em;
         }
 
         @media (min-width: 1200px) {
