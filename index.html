@@ -228,6 +228,88 @@
             color: #fff;
         }
 
+        /* Project notes: a quiet title affordance and a floating reading panel. */
+        .project-title {
+            appearance: none;
+            border: 0;
+            padding: 0;
+            background: none;
+            color: inherit;
+            font: inherit;
+            text-align: left;
+            overflow-wrap: anywhere;
+            cursor: help;
+            text-decoration: underline dotted #bbb;
+            text-underline-offset: 0.22em;
+            text-decoration-thickness: 1px;
+        }
+
+        .project-title:hover,
+        .project-title[aria-expanded="true"] {
+            text-decoration-color: var(--text);
+        }
+
+        .project-title:focus-visible {
+            outline: 2px solid var(--link);
+            outline-offset: 4px;
+            border-radius: 2px;
+        }
+
+        .project-tooltip {
+            position: fixed;
+            z-index: 10;
+            width: 320px;
+            max-width: calc(100vw - 32px);
+            max-height: calc(100dvh - 48px);
+            padding: 1.25rem;
+            border: 1px solid #414148;
+            border-radius: 14px;
+            background: #242429;
+            color: #f5f5f7;
+            box-shadow: 0 16px 40px rgb(0 0 0 / 16%);
+            font-size: 0.88rem;
+            line-height: 1.9;
+            overflow-wrap: anywhere;
+        }
+
+        .project-tooltip::before {
+            content: "";
+            position: absolute;
+            left: -7px;
+            top: var(--arrow-top, 24px);
+            width: 12px;
+            height: 12px;
+            background: #242429;
+            border-left: 1px solid #414148;
+            border-bottom: 1px solid #414148;
+            transform: rotate(45deg);
+        }
+
+        .project-tooltip-content {
+            max-height: calc(100dvh - 100px);
+            overflow-y: auto;
+        }
+
+        .project-tooltip-label {
+            margin-bottom: 0.7rem;
+            color: #bcbcc8;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+        }
+
+        @media (min-width: 1200px) {
+            .has-project-notes main {
+                margin-left: max(1.5rem, calc((100vw - 1180px) / 2));
+            }
+        }
+
+        @media (max-width: 1199px) {
+            .project-tooltip::before {
+                display: none;
+            }
+        }
+
         /* Generic item list (OSS, talks, experience) */
         ul.item-list {
             list-style: none;
@@ -313,6 +395,7 @@
             }
         }
     </style>
+    <script src="./project-notes.js" defer></script>
 </head>
 <body>
     <main>
@@ -337,12 +420,12 @@
             <h2>Publications</h2>
             <ol class="pub-list">
                 <li>
-                    <div class="pub-title">"Who Is This User?" to "What Does This Purchase Mean?": A Deployed Pipeline for Semantic User Profiling at Bank Scale <a class="link-button link-button--arxiv" href="https://arxiv.org/abs/2609.19928">arXiv</a> <a class="link-button" href="https://icdm2026.neu.edu.cn/">Conference</a></div>
+                    <div class="pub-title"><span data-project-note="bank-profiling">"Who Is This User?" to "What Does This Purchase Mean?": A Deployed Pipeline for Semantic User Profiling at Bank Scale</span> <a class="link-button link-button--arxiv" href="https://arxiv.org/abs/2609.19928">arXiv</a> <a class="link-button" href="https://icdm2026.neu.edu.cn/">Conference</a></div>
                     <div class="pub-authors"><u>Ryota Mitsuhashi</u>, Tetsuro Morimura, Hirotake Ito</div>
                     <div class="pub-venue"><em>IEEE International Conference on Data Mining (ICDM)</em>, 2026</div>
                 </li>
                 <li>
-                    <div class="pub-title">MO-GRPO: Mitigating Reward Hacking of Group Relative Policy Optimization on Multi-Objective Problems <a class="link-button link-button--arxiv" href="https://arxiv.org/abs/2509.22047">arXiv</a></div>
+                    <div class="pub-title"><span data-project-note="mo-grpo">MO-GRPO: Mitigating Reward Hacking of Group Relative Policy Optimization on Multi-Objective Problems</span> <a class="link-button link-button--arxiv" href="https://arxiv.org/abs/2509.22047">arXiv</a></div>
                     <div class="pub-authors">Yuki Ichihara, Yuu Jinnai, Tetsuro Morimura, Mitsuki Sakamoto, <u>Ryota Mitsuhashi</u>, Eiji Uchibe</div>
                     <div class="pub-venue"><em>Transactions of the Association for Computational Linguistics (TACL)</em>, 2026</div>
                 </li>
@@ -351,7 +434,7 @@
             <h3 class="subhead">Domestic Conferences</h3>
             <ol class="pub-list">
                 <li>
-                    <div class="pub-title">Alignment of Responses Based on Preference Dataset Learning: Application to Japanese Large Language Models and Safety Evaluation <a class="link-button" href="https://www.anlp.jp/proceedings/annual_meeting/2024/pdf_dir/D10-2.pdf">PDF</a></div>
+                    <div class="pub-title"><span data-project-note="alignment">Alignment of Responses Based on Preference Dataset Learning: Application to Japanese Large Language Models and Safety Evaluation</span> <a class="link-button" href="https://www.anlp.jp/proceedings/annual_meeting/2024/pdf_dir/D10-2.pdf">PDF</a></div>
                     <div class="title-ja">嗜好データセットの学習に基づく応答文のアライメント — 日本語大規模言語モデルへの適用と安全性の評価</div>
                     <div class="pub-authors"><u>Ryota Mitsuhashi</u>, Toshiyuki Tanaka, Kentaro Yamada</div>
                     <div class="pub-venue">The 30th Annual Meeting of the Association for Natural Language Processing (NLP2024), Oral Presentation, 2024</div>
@@ -368,13 +451,13 @@
             <h3 class="subhead">Models</h3>
             <ul class="item-list">
                 <li>
-                    <div class="item-head">Tora-7B-v0.1 <a class="link-button link-button--huggingface" href="https://huggingface.co/ryota39/Tora-7B-v0.1">Hugging Face</a> (2024)</div>
+                    <div class="item-head"><span data-project-note="tora">Tora-7B-v0.1</span> <a class="link-button link-button--huggingface" href="https://huggingface.co/ryota39/Tora-7B-v0.1">Hugging Face</a> (2024)</div>
                     <div class="item-desc">
                         A Japanese LLM built with task arithmetic (chat vector), transferring instruction-following ability from an English LLM without additional training.
                     </div>
                 </li>
                 <li>
-                    <div class="item-head">Tanuki-8B-dpo-v1.0 / Tanuki-8x8B-dpo-v1.0 <a class="link-button link-button--huggingface" href="https://huggingface.co/weblab-GENIAC/Tanuki-8B-dpo-v1.0">Hugging Face · 8B</a> <a class="link-button link-button--huggingface" href="https://huggingface.co/weblab-GENIAC/Tanuki-8x8B-dpo-v1.0">Hugging Face · 8×8B</a> (2024)</div>
+                    <div class="item-head"><span data-project-note="tanuki">Tanuki-8B-dpo-v1.0 / Tanuki-8x8B-dpo-v1.0</span> <a class="link-button link-button--huggingface" href="https://huggingface.co/weblab-GENIAC/Tanuki-8B-dpo-v1.0">Hugging Face · 8B</a> <a class="link-button link-button--huggingface" href="https://huggingface.co/weblab-GENIAC/Tanuki-8x8B-dpo-v1.0">Hugging Face · 8×8B</a> (2024)</div>
                     <div class="item-desc">
                         Japanese LLMs developed by a volunteer community under the GENIAC LLM development project (Matsuo Lab). Outperformed GPT-3.5-turbo in both automatic and human evaluation. I led dataset construction and post-training.
                     </div>
@@ -384,25 +467,25 @@
             <h3 class="subhead">Datasets</h3>
             <ul class="item-list">
                 <li>
-                    <div class="item-head">OpenBookQA-Japanese-masked <a class="link-button link-button--huggingface" href="https://huggingface.co/datasets/weblab-GENIAC/OpenBookQA-Japanese-masked">Hugging Face</a> (2024)</div>
+                    <div class="item-head"><span data-project-note="openbookqa">OpenBookQA-Japanese-masked</span> <a class="link-button link-button--huggingface" href="https://huggingface.co/datasets/weblab-GENIAC/OpenBookQA-Japanese-masked">Hugging Face</a> (2024)</div>
                     <div class="item-desc">
                         A Japanese translation of OpenBookQA, a multiple-choice question-answering benchmark, for post-training.
                     </div>
                 </li>
                 <li>
-                    <div class="item-head">Open-Platypus-Japanese-masked <a class="link-button link-button--huggingface" href="https://huggingface.co/datasets/weblab-GENIAC/Open-Platypus-Japanese-masked">Hugging Face</a> (2024)</div>
+                    <div class="item-head"><span data-project-note="platypus">Open-Platypus-Japanese-masked</span> <a class="link-button link-button--huggingface" href="https://huggingface.co/datasets/weblab-GENIAC/Open-Platypus-Japanese-masked">Hugging Face</a> (2024)</div>
                     <div class="item-desc">
                         A translated dataset for improving mathematical and reasoning abilities of LLMs.
                     </div>
                 </li>
                 <li>
-                    <div class="item-head">aya-ja-nemotron-dpo-masked <a class="link-button link-button--huggingface" href="https://huggingface.co/datasets/weblab-GENIAC/aya-ja-nemotron-dpo-masked">Hugging Face</a> (2024)</div>
+                    <div class="item-head"><span data-project-note="nemotron">aya-ja-nemotron-dpo-masked</span> <a class="link-button link-button--huggingface" href="https://huggingface.co/datasets/weblab-GENIAC/aya-ja-nemotron-dpo-masked">Hugging Face</a> (2024)</div>
                     <div class="item-desc">
                         A preference dataset with responses regenerated by Nemotron-4-340B-Instruct to improve reasoning ability.
                     </div>
                 </li>
                 <li>
-                    <div class="item-head">aya-ja-evol-instruct-calm3-dpo-masked <a class="link-button link-button--huggingface" href="https://huggingface.co/datasets/weblab-GENIAC/aya-ja-evol-instruct-calm3-dpo-masked">Hugging Face</a> (2024)</div>
+                    <div class="item-head"><span data-project-note="evol-instruct">aya-ja-evol-instruct-calm3-dpo-masked</span> <a class="link-button link-button--huggingface" href="https://huggingface.co/datasets/weblab-GENIAC/aya-ja-evol-instruct-calm3-dpo-masked">Hugging Face</a> (2024)</div>
                     <div class="item-desc">
                         A synthetic preference dataset built by evolving instructions with Evol-Instruct and regenerating responses with calm3-22b-chat.
                     </div>
@@ -414,10 +497,10 @@
             <h2>Talks &amp; Articles</h2>
             <ul class="item-list">
                 <li>
-                    <div class="item-head">Weights&amp;Biases meetup #26 — Introduction of Agentic Reinforcement Trainer <a class="link-button link-button--speakerdeck" href="https://speakerdeck.com/olachinkei/mcpsabalian-xi-wollmnixue-baseruqiang-hua-xue-xi-huremuwakuartwoshi-tutemiru-cyberagent-san-qiao-liang-tai">Speaker Deck</a> (2025)</div>
+                    <div class="item-head"><span data-project-note="art">Weights&amp;Biases meetup #26 — Introduction of Agentic Reinforcement Trainer</span> <a class="link-button link-button--speakerdeck" href="https://speakerdeck.com/olachinkei/mcpsabalian-xi-wollmnixue-baseruqiang-hua-xue-xi-huremuwakuartwoshi-tutemiru-cyberagent-san-qiao-liang-tai">Speaker Deck</a> (2025)</div>
                 </li>
                 <li>
-                    <div class="item-head">Sake RAG — Building a Dialogue System Specialized in Sake Knowledge <a class="link-button link-button--docswell" href="https://www.docswell.com/s/kaeru/ZP2XQ6-2025-02-26-004337#p1">Docswell</a> (2025)</div>
+                    <div class="item-head"><span data-project-note="sake-rag">Sake RAG — Building a Dialogue System Specialized in Sake Knowledge</span> <a class="link-button link-button--docswell" href="https://www.docswell.com/s/kaeru/ZP2XQ6-2025-02-26-004337#p1">Docswell</a> (2025)</div>
                     <div class="item-desc">
                         A retrieval-augmented dialogue system specialized in sake knowledge, built with a 2B-scale LLM — from benchmark construction to a demo application.
                     </div>
@@ -429,9 +512,9 @@
             <h2>Workshops</h2>
             <ul class="item-list">
                 <li>
-                    <div class="item-head">Development and Release of ca-reward-3b-ja, a Lightweight Japanese Reward Model <a class="link-button" href="https://jedworkshop.github.io/JLR2026/materials/b-1.pdf">PDF</a> (2026)</div>
+                    <div class="item-head"><span data-project-note="ca-reward">ca-reward-3b-ja: a Lightweight Japanese Reward Model</span> <a class="link-button" href="https://jedworkshop.github.io/JLR2026/materials/b-1.pdf">PDF</a> (2026)</div>
                     <div class="title-ja" lang="ja">軽量な日本語報酬モデル ca-reward-3b-ja の構築と公開</div>
-                    <div class="item-desc"><a href="https://jedworkshop.github.io/JLR2026/">NLP2026 Workshop on Japanese Language Resources (JLR2026)</a></div>
+                    <div class="item-desc">NLP2026 Workshop on Japanese Language Resources (JLR2026)</div>
                 </li>
             </ul>
         </section>

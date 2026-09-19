@@ -1,0 +1,155 @@
+// Edit these notes to add first-hand context for each project.
+const projectNotes = {
+    'bank-profiling': '数千万ユーザーの取引データをLLMで構造化し、自然言語で検索可能な意味的なタグを付与した取り組みです。銀行さん向けのプロダクトに導入済みの技術です。プロダクト導入・国際論文採択・複数特許出願・プレスリリースまで達成した事例です。',
+    'mo-grpo': 'To be appended',
+    'alignment': 'To be appended',
+    'tora': 'To be appended',
+    'tanuki': 'To be appended',
+    'openbookqa': 'To be appended',
+    'platypus': 'To be appended',
+    'nemotron': 'To be appended',
+    'evol-instruct': 'To be appended',
+    'art': 'To be appended',
+    'sake-rag': 'To be appended',
+    'ca-reward': 'To be appended',
+};
+
+(() => {
+    let current = null;
+    let hoveredButton = null;
+    let tooltipHovered = false;
+    let keyboardMode = false;
+    let touchPinned = false;
+    let hideTimer;
+
+    function hide() {
+        clearTimeout(hideTimer);
+        if (!current) return;
+        current.tooltip.hidden = true;
+        current.button.setAttribute('aria-expanded', 'false');
+        current = null;
+        tooltipHovered = false;
+        touchPinned = false;
+    }
+
+    function position() {
+        if (!current) return;
+        const { button, tooltip } = current;
+        const rect = button.getBoundingClientRect();
+        if (rect.bottom < 0 || rect.top > innerHeight) {
+            hide();
+            return;
+        }
+        const height = tooltip.offsetHeight;
+        let left;
+        let top;
+        if (innerWidth >= 1200) {
+            left = document.querySelector('main').getBoundingClientRect().right + 24;
+            top = rect.top - 12;
+        } else {
+            left = innerWidth - tooltip.offsetWidth - 16;
+            top = rect.bottom + 12;
+            if (top + height > innerHeight - 24) top = rect.top - height - 12;
+        }
+        top = Math.max(24, Math.min(top, innerHeight - height - 24));
+        tooltip.style.left = `${left}px`;
+        tooltip.style.top = `${top}px`;
+        tooltip.style.setProperty('--arrow-top', `${Math.max(18, Math.min(rect.top + 14 - top, height - 30))}px`);
+    }
+
+    function show(entry) {
+        clearTimeout(hideTimer);
+        if (current !== entry) hide();
+        current = entry;
+        entry.tooltip.hidden = false;
+        entry.button.setAttribute('aria-expanded', 'true');
+        position();
+    }
+
+    function scheduleHide() {
+        clearTimeout(hideTimer);
+        hideTimer = setTimeout(() => {
+            if (!current || touchPinned || tooltipHovered || hoveredButton === current.button) return;
+            if (keyboardMode && document.activeElement === current.button) return;
+            hide();
+        }, 220);
+    }
+
+    document.querySelectorAll('[data-project-note]').forEach((title) => {
+        const key = title.dataset.projectNote;
+        if (!projectNotes[key]) return;
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'project-title';
+        button.textContent = title.textContent;
+        button.setAttribute('aria-describedby', `note-${key}`);
+        button.setAttribute('aria-expanded', 'false');
+        button.setAttribute('aria-controls', `note-${key}`);
+        title.replaceWith(button);
+
+        const tooltip = document.createElement('div');
+        tooltip.id = `note-${key}`;
+        tooltip.className = 'project-tooltip';
+        tooltip.setAttribute('role', 'tooltip');
+        tooltip.hidden = true;
+        const content = document.createElement('div');
+        content.className = 'project-tooltip-content';
+        const label = document.createElement('p');
+        label.className = 'project-tooltip-label';
+        label.textContent = 'PROJECT NOTES';
+        const text = document.createElement('p');
+        text.lang = key === 'bank-profiling' ? 'ja' : 'en';
+        text.textContent = projectNotes[key];
+        content.append(label, text);
+        tooltip.append(content);
+        document.body.append(tooltip);
+        const entry = { button, tooltip };
+        let touchWasOpen = false;
+
+        button.addEventListener('pointerenter', (event) => {
+            if (event.pointerType === 'touch') return;
+            hoveredButton = button;
+            show(entry);
+        });
+        button.addEventListener('pointerleave', (event) => {
+            if (event.pointerType === 'touch') return;
+            hoveredButton = null;
+            scheduleHide();
+        });
+        button.addEventListener('pointerdown', (event) => {
+            touchWasOpen = event.pointerType === 'touch' && current === entry;
+        });
+        button.addEventListener('focus', () => {
+            if (keyboardMode) show(entry);
+        });
+        button.addEventListener('blur', scheduleHide);
+        button.addEventListener('click', (event) => {
+            if (event.pointerType === 'touch' && touchWasOpen) {
+                hide();
+                return;
+            }
+            show(entry);
+            touchPinned = event.pointerType === 'touch';
+        });
+        tooltip.addEventListener('pointerenter', () => {
+            tooltipHovered = true;
+            clearTimeout(hideTimer);
+        });
+        tooltip.addEventListener('pointerleave', () => {
+            tooltipHovered = false;
+            scheduleHide();
+        });
+    });
+
+    document.body.classList.add('has-project-notes');
+    document.addEventListener('keydown', (event) => {
+        keyboardMode = true;
+        if (event.key === 'Escape') hide();
+    });
+    document.addEventListener('pointerdown', (event) => {
+        keyboardMode = false;
+        if (current && !current.button.contains(event.target) && !current.tooltip.contains(event.target)) hide();
+    }, true);
+    window.addEventListener('scroll', position, { passive: true });
+    window.addEventListener('resize', position);
+})();
