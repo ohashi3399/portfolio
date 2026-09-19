@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ryota Mitsuhashi | 三橋 亮太</title>
+    <title>Ryota Mitsuhashi</title>
     <meta name="description" content="Ryota Mitsuhashi — Research Engineer working on natural language generation and reinforcement learning for large language models.">
     <style>
         * {
@@ -68,11 +68,6 @@
             letter-spacing: 0.01em;
         }
 
-        .header .name-ja {
-            font-size: 1rem;
-            color: var(--text-sub);
-        }
-
         .header .role {
             margin-top: 0.35rem;
             font-size: 0.95rem;
@@ -108,14 +103,8 @@
             color: var(--accent);
         }
 
-        h2 .ja {
-            font-size: 0.85rem;
-            font-weight: 400;
-            color: var(--text-sub);
-            margin-left: 0.6rem;
-        }
-
-        .bilingual .ja {
+        .bilingual .ja,
+        .title-ja {
             display: block;
             font-size: 0.92rem;
             color: var(--text-sub);
@@ -194,12 +183,6 @@
             padding-top: 0.1rem;
         }
 
-        dl.timeline dd .ja {
-            display: block;
-            font-size: 0.9rem;
-            color: var(--text-sub);
-        }
-
         h3.subhead {
             font-size: 1rem;
             font-weight: 600;
@@ -237,8 +220,8 @@
         <header class="header">
             <img class="header-photo" src="./icon/icon.png" alt="Portrait of Ryota Mitsuhashi">
             <div>
-                <h1>Ryota Mitsuhashi <span class="name-ja">三橋 亮太</span></h1>
-                <p class="role">Research Engineer, CyberAgent, Inc. / 株式会社サイバーエージェント リサーチエンジニア</p>
+                <h1>Ryota Mitsuhashi</h1>
+                <p class="role">Research Engineer, CyberAgent, Inc.</p>
                 <p class="contact">
                     <span>ryota_mitsuhashi_xa [at] cyberagent.co.jp</span>
                     <span><a href="https://github.com/ohashi3399">GitHub</a></span>
@@ -249,136 +232,136 @@
         </header>
 
         <section id="about">
-            <h2><span class="en">About</span><span class="ja">概要</span></h2>
+            <h2>About</h2>
             <p class="bilingual">
                 I am a research engineer at CyberAgent, Inc. My work focuses on natural language generation and reinforcement learning for large language models, with a particular interest in deploying on-premise language models in real-world applications.
-                <span class="ja">株式会社サイバーエージェントのリサーチエンジニアです。文章生成と言語モデルの強化学習を専門とし、特にオンプレミスな言語モデルの実応用に注力しています。</span>
             </p>
         </section>
 
         <section id="publications">
-            <h2><span class="en">Publications</span><span class="ja">論文</span></h2>
+            <h2>Publications</h2>
             <ol class="pub-list">
                 <li>
                     <div class="pub-title">"Who Is This User?" to "What Does This Purchase Mean?": A Deployed Pipeline for Semantic User Profiling at Bank Scale</div>
-                    <div class="pub-authors"><strong>Ryota Mitsuhashi</strong>, Tetsuro Morimura, Hirotake Ito</div>
+                    <div class="pub-authors"><u>Ryota Mitsuhashi</u>, Tetsuro Morimura, Hirotake Ito</div>
                     <div class="pub-venue"><em>IEEE International Conference on Data Mining (ICDM)</em>, 2026</div>
                     <div class="pub-links"><a href="https://icdm2026.neu.edu.cn/">[conference]</a></div>
                 </li>
                 <li>
                     <div class="pub-title">MO-GRPO: Mitigating Reward Hacking of Group Relative Policy Optimization on Multi-Objective Problems</div>
-                    <div class="pub-authors">Yuki Ichihara, Yuu Jinnai, Tetsuro Morimura, Mitsuki Sakamoto, <strong>Ryota Mitsuhashi</strong>, Eiji Uchibe</div>
+                    <div class="pub-authors">Yuki Ichihara, Yuu Jinnai, Tetsuro Morimura, Mitsuki Sakamoto, <u>Ryota Mitsuhashi</u>, Eiji Uchibe</div>
                     <div class="pub-venue"><em>Transactions of the Association for Computational Linguistics (TACL)</em>, 2026</div>
                 </li>
             </ol>
 
-            <h3 class="subhead">Domestic Conferences / 国内会議</h3>
+            <h3 class="subhead">Domestic Conferences</h3>
             <ol class="pub-list">
                 <li>
-                    <div class="pub-title">嗜好データセットの学習に基づく応答文のアライメント — 日本語大規模言語モデルへの適用と安全性の評価</div>
-                    <div class="pub-venue">言語処理学会第30回年次大会 (NLP2024), 口頭発表, 2024</div>
+                    <div class="pub-title">Alignment of Responses Based on Preference Dataset Learning: Application to Japanese Large Language Models and Safety Evaluation</div>
+                    <div class="title-ja">嗜好データセットの学習に基づく応答文のアライメント — 日本語大規模言語モデルへの適用と安全性の評価</div>
+                    <div class="pub-authors"><u>Ryota Mitsuhashi</u>, Toshiyuki Tanaka, Kentaro Yamada</div>
+                    <div class="pub-venue">The 30th Annual Meeting of the Association for Natural Language Processing (NLP2024), Oral Presentation, 2024</div>
                     <div class="pub-links"><a href="https://www.anlp.jp/proceedings/annual_meeting/2024/pdf_dir/D10-2.pdf">[paper]</a></div>
                 </li>
             </ol>
         </section>
 
         <section id="open-source">
-            <h2><span class="en">Open-Source Activities</span><span class="ja">オープンソース活動</span></h2>
+            <h2>Open-Source Activities</h2>
             <p class="note">
                 The models and datasets below were built and released as personal open-source contributions, independent of my employer.
-                以下のモデル・データセットは、所属企業の業務とは独立した個人のオープンソース活動として構築・公開したものです。
             </p>
 
-            <h3 class="subhead">Models / 公開モデル</h3>
+            <h3 class="subhead">Models</h3>
             <ul class="item-list">
                 <li>
-                    <div class="item-head"><a href="https://huggingface.co/ryota39/Tora-7B-v0.1">Tora-7B-v0.1</a> (2024)</div>
+                    <div class="item-head">Tora-7B-v0.1 <a href="https://huggingface.co/ryota39/Tora-7B-v0.1">[huggingface]</a> (2024)</div>
                     <div class="item-desc">
                         A Japanese LLM built with task arithmetic (chat vector), transferring instruction-following ability from an English LLM without additional training.
-                        <span class="ja">Task Vectorを用いたTask Arithmeticにより、英語LLMのインストラクション能力を追加学習なしに日本語LLMへ転用したモデル。</span>
                     </div>
                 </li>
                 <li>
-                    <div class="item-head"><a href="https://huggingface.co/weblab-GENIAC/Tanuki-8B-dpo-v1.0">Tanuki-8B-dpo-v1.0</a> / <a href="https://huggingface.co/weblab-GENIAC/Tanuki-8x8B-dpo-v1.0">Tanuki-8x8B-dpo-v1.0</a> (2024)</div>
+                    <div class="item-head">Tanuki-8B-dpo-v1.0 / Tanuki-8x8B-dpo-v1.0 <a href="https://huggingface.co/weblab-GENIAC/Tanuki-8B-dpo-v1.0">[huggingface]</a> <a href="https://huggingface.co/weblab-GENIAC/Tanuki-8x8B-dpo-v1.0">[huggingface]</a> (2024)</div>
                     <div class="item-desc">
                         Japanese LLMs developed by a volunteer community under the GENIAC LLM development project (Matsuo Lab). Outperformed GPT-3.5-turbo in both automatic and human evaluation. I led dataset construction and post-training.
-                        <span class="ja">GENIAC 松尾研LLM開発プロジェクトの有志コミュニティによる開発。定量評価・人手評価の双方でGPT-3.5-turboを上回る性能を記録。データセット構築と事後学習を主に担当。</span>
                     </div>
                 </li>
             </ul>
 
-            <h3 class="subhead">Datasets / 公開データセット</h3>
+            <h3 class="subhead">Datasets</h3>
             <ul class="item-list">
                 <li>
-                    <div class="item-head"><a href="https://huggingface.co/datasets/weblab-GENIAC/OpenBookQA-Japanese-masked">OpenBookQA-Japanese-masked</a> (2024)</div>
+                    <div class="item-head">OpenBookQA-Japanese-masked <a href="https://huggingface.co/datasets/weblab-GENIAC/OpenBookQA-Japanese-masked">[huggingface]</a> (2024)</div>
                     <div class="item-desc">
                         A Japanese translation of OpenBookQA, a multiple-choice question-answering benchmark, for post-training.
-                        <span class="ja">4択の多肢選択式QAデータセットOpenBookQAを翻訳した事後学習用データセット。</span>
                     </div>
                 </li>
                 <li>
-                    <div class="item-head"><a href="https://huggingface.co/datasets/weblab-GENIAC/Open-Platypus-Japanese-masked">Open-Platypus-Japanese-masked</a> (2024)</div>
+                    <div class="item-head">Open-Platypus-Japanese-masked <a href="https://huggingface.co/datasets/weblab-GENIAC/Open-Platypus-Japanese-masked">[huggingface]</a> (2024)</div>
                     <div class="item-desc">
                         A translated dataset for improving mathematical and reasoning abilities of LLMs.
-                        <span class="ja">LLMの数学能力と推論能力の向上を目的に翻訳・構築した事後学習用データセット。</span>
                     </div>
                 </li>
                 <li>
-                    <div class="item-head"><a href="https://huggingface.co/datasets/weblab-GENIAC/aya-ja-nemotron-dpo-masked">aya-ja-nemotron-dpo-masked</a> (2024)</div>
+                    <div class="item-head">aya-ja-nemotron-dpo-masked <a href="https://huggingface.co/datasets/weblab-GENIAC/aya-ja-nemotron-dpo-masked">[huggingface]</a> (2024)</div>
                     <div class="item-desc">
                         A preference dataset with responses regenerated by Nemotron-4-340B-Instruct to improve reasoning ability.
-                        <span class="ja">Nemotron-4-340B-Instructで応答を再生成して構築した、推論能力向上のための嗜好データセット。</span>
                     </div>
                 </li>
                 <li>
-                    <div class="item-head"><a href="https://huggingface.co/datasets/weblab-GENIAC/aya-ja-evol-instruct-calm3-dpo-masked">aya-ja-evol-instruct-calm3-dpo-masked</a> (2024)</div>
+                    <div class="item-head">aya-ja-evol-instruct-calm3-dpo-masked <a href="https://huggingface.co/datasets/weblab-GENIAC/aya-ja-evol-instruct-calm3-dpo-masked">[huggingface]</a> (2024)</div>
                     <div class="item-desc">
                         A synthetic preference dataset built by evolving instructions with Evol-Instruct and regenerating responses with calm3-22b-chat.
-                        <span class="ja">Evol-Instructで質問文を拡張し、calm3-22b-chatで応答を再生成して構築した合成嗜好データセット。</span>
                     </div>
                 </li>
             </ul>
         </section>
 
         <section id="talks">
-            <h2><span class="en">Talks &amp; Articles</span><span class="ja">公開資料</span></h2>
+            <h2>Talks &amp; Articles</h2>
             <ul class="item-list">
                 <li>
-                    <div class="item-head"><a href="https://www.docswell.com/s/kaeru/ZP2XQ6-2025-02-26-004337">Sake RAG — 日本酒の知識に特化した対話システムは作れるか</a> (2025)</div>
+                    <div class="item-head"><a href="https://www.docswell.com/s/kaeru/ZP2XQ6-2025-02-26-004337">Sake RAG — Building a Dialogue System Specialized in Sake Knowledge</a> (2025)</div>
                     <div class="item-desc">
                         A retrieval-augmented dialogue system specialized in sake knowledge, built with a 2B-scale LLM — from benchmark construction to a demo application.
-                        <span class="ja">醸造協会誌収録の知識をもとに、2B級LLMとRAGでベンチマーク構築からデモアプリ実装までを行い、開発過程をまとめた資料。</span>
                     </div>
                 </li>
             </ul>
         </section>
 
         <section id="experience">
-            <h2><span class="en">Experience</span><span class="ja">職歴</span></h2>
+            <h2>Experience</h2>
             <dl class="timeline">
                 <dt>2024 – present</dt>
-                <dd>Research Engineer, CyberAgent, Inc.<span class="ja">株式会社サイバーエージェント リサーチエンジニア</span></dd>
+                <dd>Research Engineer, CyberAgent, Inc.</dd>
                 <dt>2021 – 2024</dt>
-                <dd>Staff Engineer, Honda R&amp;D Co., Ltd.<span class="ja">株式会社本田技術研究所 スタッフエンジニア</span></dd>
+                <dd>Staff Engineer, Honda R&amp;D Co., Ltd.</dd>
                 <dt>2019 – 2021</dt>
-                <dd>Researcher, TOPPAN Holdings Inc.<span class="ja">TOPPANホールディングス 研究員</span></dd>
+                <dd>Researcher, TOPPAN Holdings Inc.</dd>
             </dl>
-            <h3 class="subhead">Research Areas / 経験分野</h3>
-            <p class="bilingual">
-                Biosignal processing, optical character recognition, grammatical error correction, multimodal dialogue systems, safety alignment of language models, and reinforcement learning for language models.
-                <span class="ja">生体信号処理、光学文字認識、文法誤り訂正、マルチモーダル対話システム、言語モデルの安全性アライメント、言語モデルの強化学習。</span>
-            </p>
+            <h3 class="subhead">Research Areas</h3>
+            <ul class="item-list">
+                <li><strong>During university:</strong> Biosignal processing; non-contact pulse-wave extraction from facial video, with estimation and visualization of autonomic nervous system activity.</li>
+                <li><strong>TOPPAN:</strong> Optical character recognition; text error correction.</li>
+                <li><strong>Honda R&amp;D:</strong> Multimodal real-time dialogue systems.</li>
+                <li><strong>CyberAgent:</strong> Reward models; user attribute estimation.</li>
+            </ul>
+        </section>
+
+        <section id="press-release">
+            <h2>Press Release</h2>
+            <p>To be appended.</p>
         </section>
 
         <section id="education">
-            <h2><span class="en">Education</span><span class="ja">学歴</span></h2>
+            <h2>Education</h2>
             <dl class="timeline">
                 <dt>2017 – 2019</dt>
-                <dd>M.Eng., Imaging Science, Graduate School of Science and Engineering, Chiba University<span class="ja">千葉大学大学院 創成工学専攻 イメージング科学コース 修士前期課程修了</span></dd>
+                <dd>M.Eng., Imaging Science, Graduate School of Science and Engineering, Chiba University</dd>
                 <dt>2015 – 2017</dt>
-                <dd>B.Eng., Department of Information and Image Sciences, Chiba University<span class="ja">千葉大学 情報画像工学科 学士</span></dd>
+                <dd>B.Eng., Department of Information and Image Sciences, Chiba University</dd>
                 <dt>2010 – 2015</dt>
-                <dd>Associate Degree, Department of Electronic Control Engineering, National Institute of Technology, Ibaraki College<span class="ja">国立茨城工業高等専門学校 電子制御工学科 準学士</span></dd>
+                <dd>Associate Degree, Department of Electronic Control Engineering, National Institute of Technology, Ibaraki College</dd>
             </dl>
         </section>
 
