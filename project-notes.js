@@ -44,7 +44,9 @@ const projectNotes = {
         const height = tooltip.offsetHeight;
         let left;
         let top;
-        const underlineY = rect.bottom + 3;
+        // Center the 1px stroke on a device pixel so it stays crisp on desktop.
+        const pixelRatio = window.devicePixelRatio || 1;
+        const underlineY = (Math.round((rect.bottom + 3) * pixelRatio - pixelRatio / 2) + pixelRatio / 2) / pixelRatio;
         if (innerWidth >= 1200) {
             left = document.querySelector('main').getBoundingClientRect().right + 24;
             top = underlineY - 24;
