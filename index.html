@@ -14,14 +14,14 @@
 
         :root {
             --text: #1a1a1a;
-            --text-sub: #555;
+            --text-sub: #484848;
             --link: #0b5394;
             --rule: #ddd;
             --accent: #1B4D3E;
         }
 
         html {
-            font-size: 16px;
+            font-size: 17px;
         }
 
         body {
@@ -32,18 +32,20 @@
         }
 
         main {
-            max-width: 760px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 3rem 1.5rem 4rem;
         }
 
         a {
             color: var(--link);
-            text-decoration: none;
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 0.2em;
         }
 
         a:hover {
-            text-decoration: underline;
+            text-decoration-thickness: 2px;
         }
 
         /* Header */
@@ -63,8 +65,9 @@
         }
 
         .header h1 {
-            font-size: 1.7rem;
-            font-weight: 600;
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1.25;
             letter-spacing: 0.01em;
         }
 
@@ -72,6 +75,10 @@
             margin-top: 0.35rem;
             font-size: 0.95rem;
             color: var(--text-sub);
+        }
+
+        .header > div {
+            min-width: 0;
         }
 
         .contact {
@@ -92,15 +99,15 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 2rem;
-            height: 2rem;
+            width: 2.6rem;
+            height: 2.6rem;
             border-radius: 4px;
         }
 
         .social-link img {
             width: 20px;
             height: 20px;
-            opacity: 0.7;
+            opacity: 0.85;
         }
 
         .social-link:hover {
@@ -114,19 +121,23 @@
 
         .intro {
             margin-top: 1.5rem;
+            padding-left: 1rem;
+            border-left: 3px solid var(--rule);
+            font-size: 1.05rem;
         }
 
         /* Sections */
         section {
-            margin-top: 2.75rem;
+            margin-top: 3rem;
         }
 
         h2 {
-            font-size: 1.15rem;
-            font-weight: 600;
-            padding-bottom: 0.4rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent);
+            padding-bottom: 0.55rem;
             border-bottom: 1px solid var(--rule);
-            margin-bottom: 1.1rem;
+            margin-bottom: 1.3rem;
         }
 
         h2 .en {
@@ -147,11 +158,18 @@
         }
 
         ol.pub-list > li {
-            margin-bottom: 1.4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        ol.pub-list > li + li {
+            padding-top: 1.5rem;
+            border-top: 1px solid #eee;
         }
 
         .pub-title {
-            font-weight: 600;
+            font-weight: 700;
+            line-height: 1.5;
+            margin-bottom: 0.4rem;
         }
 
         .pub-authors {
@@ -161,6 +179,7 @@
 
         .pub-venue {
             font-size: 0.92rem;
+            margin-top: 0.2rem;
         }
 
         .pub-venue em {
@@ -179,11 +198,14 @@
         }
 
         ul.item-list > li {
-            margin-bottom: 1.1rem;
+            margin-bottom: 1.4rem;
         }
 
         .item-head {
-            font-weight: 600;
+            font-weight: 700;
+            line-height: 1.5;
+            margin-bottom: 0.3rem;
+            overflow-wrap: anywhere;
         }
 
         .item-desc {
@@ -206,19 +228,24 @@
         dl.timeline {
             display: grid;
             grid-template-columns: 8.5rem 1fr;
-            row-gap: 0.6rem;
+            gap: 1rem 1.25rem;
+        }
+
+        dl.timeline dd {
+            min-width: 0;
         }
 
         dl.timeline dt {
             color: var(--text-sub);
             font-size: 0.92rem;
             padding-top: 0.1rem;
+            font-variant-numeric: tabular-nums;
         }
 
         h3.subhead {
-            font-size: 1rem;
-            font-weight: 600;
-            margin: 1.4rem 0 0.8rem;
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin: 1.8rem 0 0.9rem;
         }
 
         footer {
@@ -230,6 +257,10 @@
         }
 
         @media (max-width: 600px) {
+            main {
+                padding: 2rem 1.25rem 3rem;
+            }
+
             .header {
                 flex-direction: column;
                 align-items: flex-start;
@@ -378,7 +409,7 @@
             <h2>Education</h2>
             <dl class="timeline">
                 <dt>2017 – 2019</dt>
-                <dd>M.Eng., Imaging Science, Graduate School of Science and Engineering, Chiba University</dd>
+                <dd>M.Eng., Graduate School of Science and Engineering, Chiba University</dd>
                 <dt>2015 – 2017</dt>
                 <dd>B.Eng., Department of Information and Image Sciences, Chiba University</dd>
                 <dt>2010 – 2015</dt>
