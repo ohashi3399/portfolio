@@ -1,17 +1,17 @@
 // Edit these notes to add first-hand context for each project.
 const projectNotes = {
-    'bank-profiling': '数千万ユーザーを保有する銀行様向けに、取引データをLLMで構造化し自然言語で検索可能なタグ付きDBに整えた取り組みです。約1年でプロダクト導入・国際論文採択・複数特許出願まで進めた事例です。',
-    'mo-grpo': 'To be appended',
-    'alignment': 'To be appended',
-    'tora': 'To be appended',
-    'tanuki': 'To be appended',
-    'openbookqa': 'To be appended',
-    'platypus': 'To be appended',
-    'nemotron': 'To be appended',
-    'evol-instruct': 'To be appended',
-    'art': 'To be appended',
-    'sake-rag': 'To be appended',
-    'ca-reward': 'To be appended',
+    'bank-profiling': '数千万ユーザーを保有する銀行様向けに、取引データをLLMで構造化し自然言語で検索可能な意味的なタグ付きDBに整えた取り組みです。1年でプロダクト導入・国際論文採択・複数特許出願まで完了した事例です。',
+    'mo-grpo': '複数の評価軸を持つAIが一つの指標だけを攻略してしまう「報酬ハッキング」を、手動調整なしで抑える強化学習手法MO-GRPOを提案し、国際学術誌TACLに採択された研究です。',
+    'alignment': '自由対話可能なLLMを自律移動型ロボットに載せて運用する際、ユーザーの不適切な入力に釣られて差別的な応答を返す問題を、ユーザーの選好を直接最適化する強化学習手法を用いて安全な応答文を返すモデルに整えた取り組みです。',
+    'tora': '英語中心に学習されたLLMのFine-tuning前後のモデル重みから差分を抽出し別のLLMに加算するTask-Arithmeticを用いて、英語で学習された指示追従能力を、訓練無しで日本語LLMに転移させた取り組みです。',
+    'tanuki': '経済産業省様主導のLLM開発プロジェクトに畠山チームとして参加し、日本語LLMの事後学習用データセットの合成に注力した取り組みです。チーム内でデータ合成とFine-tuningのコンペが行われ、最終的にGPT-3.5を超える性能を獲得したモデルを構築できた取り組みです。',
+    'openbookqa': '上記の日本語LLMの事後学習用データセットの取り組みで翻訳した多肢選択式データセットです。',
+    'platypus': '上記の日本語LLMの事後学習用データセットの取り組みで翻訳した数学データセットです。',
+    'nemotron': '上記の日本語LLMの事後学習用データセットの取り組みで合成した、日本語話者が作成した質問に対してNemotron-4-340Bで応答文を再生成したデータセットです。',
+    'evol-instruct': '上記の日本語LLMの事後学習用データセットの取り組みで合成した、Evol-Instructによる指示文の多様な拡張と、応答文を選好データに拡張したデータセットです。',
+    'art': 'エージェントの振る舞いを自動採点して少しづつ成長させていくAgentic Reinforcement Trainerというライブラリについて、登壇して紹介した取り組みです。',
+    'sake-rag': '日本酒の知識を外部知識として持たせた2B級のLLMと当時の最先端だったreasoningモデルと性能比較を行った取り組みを勉強会で紹介した取り組みです。',
+    'ca-reward': '日本語に特化した3B級の報酬モデルを開発し、商用利用可能なライセンスで公開しました。構築手順についても紹介した取り組みです。',
 };
 
 (() => {
